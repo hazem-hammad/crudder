@@ -1,0 +1,7 @@
+<?php
+
+
+use Illuminate\Support\Facades\Route;
+use App\Modules\{{modelName}}\Http\Controllers\{{modelName}}Controller;
+
+Route::get("{{modelNamePluralLowerCase}}", {{modelName}}Controller::class);
