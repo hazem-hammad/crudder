@@ -21,14 +21,4 @@
         ]"
         width="col-12"
     />
-
-    <x-forms.select-field
-        name="gender"
-        label="Select gender"
-        :options="[
-            ['key' => 'male', 'value' => 1],
-            ['key' => 'female', 'value' => 2],
-        ]"
-        width="col-12"
-    />
 </div>

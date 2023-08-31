@@ -18,7 +18,7 @@ use App\Modules\BaseModule\Services\DeleteBaseModuleService;
 use App\Modules\BaseModule\Services\StoreBaseModuleService;
 use App\Modules\BaseModule\Services\UpdateBaseModuleService;
 use Exception;
-use Illuminate\Contracs\View\View;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
 class BaseModuleController extends BaseController
@@ -28,7 +28,7 @@ class BaseModuleController extends BaseController
 
     public string $routePath = "admin.base-modules";
 
-    public string $moduleName = "Users";cket
+    public string $moduleName = "Base Modules";
 
     protected string $createFormType = "popup";
 
