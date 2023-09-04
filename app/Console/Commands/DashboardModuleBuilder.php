@@ -110,6 +110,31 @@ class DashboardModuleBuilder extends Command
             $this->modulesPath . '/User/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
         );
 
+        // Rename & replace content in requests files
+        if (File::isFile($this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/CreateBaseModuleRequest.php')) {
+            rename(
+                $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/CreateBaseModuleRequest.php',
+                $this->modulesPath . '/User/Http/Requests/Create' . singular_pascal($name) . 'Request.php'
+            );
+
+            rename(
+                $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/UpdateBaseModuleRequest.php',
+                $this->modulesPath . '/User/Http/Requests/Update' . singular_pascal($name) . 'Request.php'
+            );
+        }
+
+        File::replaceInFile(
+            'BaseModule',
+            singular_pascal($name),
+            $this->modulesPath . '/User/Http/Requests/Create' . singular_pascal($name) . 'Request.php'
+        );
+
+        File::replaceInFile(
+            'BaseModule',
+            singular_pascal($name),
+            $this->modulesPath . '/User/Http/Requests/Update' . singular_pascal($name) . 'Request.php'
+        );
+
         return true;
     }
 
