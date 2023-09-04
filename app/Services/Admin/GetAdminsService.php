@@ -27,7 +27,7 @@ class GetAdminsService extends BaseService
     /**
      * @return Collection
      */
-    public function get(): Collection
+    public function execute(): Collection
     {
         return $this->query()->active()->get();
     }
@@ -94,7 +94,7 @@ class GetAdminsService extends BaseService
         return 65;
     }
 
-    public function lastAssignedTicket()
+    public function lastAssignedTicket(): array
     {
         return [];
     }

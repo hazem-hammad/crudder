@@ -10,7 +10,7 @@ class WebSuccessResponse
     public function __construct(
         protected ?string $message,
         protected int     $status = Response::HTTP_OK,
-        protected bool    $has_redirect = false,
+        protected bool    $hasRedirect = false,
         protected ?string $url = null,
         protected ?string $file_path = null,
         protected array   $headers = []
@@ -24,7 +24,7 @@ class WebSuccessResponse
     public function toResponse(): JsonResponse
     {
         return response()->json([
-            'has_redirect' => $this->has_redirect,
+            'hasRedirect' => $this->hasRedirect,
             'url' => $this->url,
             'message' => $this->message,
             'file_path' => $this->file_path

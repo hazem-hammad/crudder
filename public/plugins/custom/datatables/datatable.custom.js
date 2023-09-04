@@ -15,7 +15,7 @@
                 processing: true,
                 serverSide: true,
                 fixedColumns: {
-                    right: fixed_actions ?? 1
+                    right: typeof fixed_actions !== 'undefined' ?? 1
                 },
                 // select: true,
                 order: [[0, "desc"]],

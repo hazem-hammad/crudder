@@ -38,9 +38,8 @@ class GetBaseModulesService extends BaseService
     /**
      * @return Collection
      */
-    public function get(): Collection
+    public function execute(): Collection
     {
         return $this->query()->get();
     }
-
 }

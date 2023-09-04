@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\ResponseMessage;
 use App\Filters\Admin\AdminFilters;
 use App\Filters\Ticket\TicketFilters;
+use App\Foundation\Enums\ResponseMessage;
+use App\Foundation\Services\General\Auth\GetAuthAdminService;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreAdminRequest;
@@ -18,7 +19,6 @@ use App\Services\Admin\DeleteAdminService;
 use App\Services\Admin\GetAdminsService;
 use App\Services\Admin\StoreAdminService;
 use App\Services\Admin\UpdateAdminService;
-use App\Services\General\Auth\GetAuthAdminService;
 use App\Services\Role\GetRolesService;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -80,7 +80,7 @@ class AdminController extends Controller
      */
     public function create(): View
     {
-        $roles = (new GetRolesService())->get();
+        $roles = (new GetRolesService())->execute();
         return view($this->config['views']['create'], [
             'config' => $this->config,
             'roles' => $roles,
@@ -101,11 +101,11 @@ class AdminController extends Controller
 
             return (new WebSuccessResponse(
                 message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
-                has_redirect: true,
+                hasRedirect: true,
                 url: route($this->config['routes']['index'])))
                 ->toResponse();
         } catch (Exception $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
 
     }
@@ -116,7 +116,7 @@ class AdminController extends Controller
      */
     public function show(Admin $admin): View
     {
-        $roles = (new GetRolesService())->get();
+        $roles = (new GetRolesService())->execute();
 
         return view($this->config['views']['show'], [
             'config' => $this->config,
@@ -153,10 +153,10 @@ class AdminController extends Controller
 
             return (new WebSuccessResponse(
                 message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage(),
-                has_redirect: true,
+                hasRedirect: true,
                 url: route($this->config['routes']['index'])))->toResponse();
         } catch (Exception $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
 
 
@@ -173,7 +173,7 @@ class AdminController extends Controller
             (new ChangeAdminStatusService())->setAdmin($admin)->change();
             return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
         } catch (Exception $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
     }
 
@@ -188,7 +188,7 @@ class AdminController extends Controller
             (new DeleteAdminService($admin))->handle();
             return (new WebSuccessResponse(message: ResponseMessage::DELETED_SUCCESSFULLY->getMessage()))->toResponse();
         } catch (Exception $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
     }
 }

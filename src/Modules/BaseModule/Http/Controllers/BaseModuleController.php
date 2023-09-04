@@ -2,10 +2,10 @@
 
 namespace App\Modules\BaseModule\Http\Controllers;
 
-use App\Enums\ResponseMessage;
 use App\Exceptions\ErrorException;
 use App\Foundation\Builder\TableBuilder;
 use App\Foundation\Builder\TableColumn;
+use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Http\Controllers\BaseController;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Modules\BaseModule\Filters\BaseModuleFilters;
@@ -28,7 +28,7 @@ class BaseModuleController extends BaseController
 
     public string $routePath = "admin.base-modules";
 
-    public string $moduleName = "Base Modules";
+    public string $moduleName = "Users";
 
     protected string $createFormType = "popup";
 
@@ -68,7 +68,7 @@ class BaseModuleController extends BaseController
     {
         $filters = new BaseModuleFilters(request());
 
-        return (new BaseModulesDatatableService())->setFilters($filters)->get();
+        return (new BaseModulesDatatableService())->setFilters($filters)->execute();
     }
 
     /**
@@ -90,14 +90,16 @@ class BaseModuleController extends BaseController
 
             $data = $createBaseModuleRequest->only('name_ar', 'name_en');
 
-            (new StoreBaseModuleService())->setData($data)->store();
+            (new StoreBaseModuleService())->setData($data)->execute();
 
             return (new WebSuccessResponse(
-                message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage()))
+                message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
+                hasRedirect: true
+            ))
                 ->toResponse();
 
         } catch (ErrorException $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
     }
 
@@ -124,12 +126,24 @@ class BaseModuleController extends BaseController
     public function changeStatus(BaseModule $baseModule): JsonResponse
     {
         try {
-            (new ChangeBaseModuleStatusService($baseModule))->change();
+            (new ChangeBaseModuleStatusService($baseModule))->execute();
+
             return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
 
         } catch (ErrorException $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
+    }
+
+    /**
+     * @param BaseModule $baseModule
+     * @return View
+     */
+    public function edit(BaseModule $baseModule): View
+    {
+        return view($this->viewPath . '::edit', [
+            'row' => $baseModule
+        ]);
     }
 
     /**
@@ -140,9 +154,9 @@ class BaseModuleController extends BaseController
      */
     public function update(BaseModule $baseModule, UpdateBaseModuleRequest $updateBaseModuleRequest): JsonResponse
     {
-        $data = $updateBaseModuleRequest->only('name_ar', 'name_en', 'enable_email');
+        $data = $updateBaseModuleRequest->only('name_ar', 'name_en', 'status');
 
-        (new UpdateBaseModuleService($baseModule))->setData($data)->update();
+        (new UpdateBaseModuleService($baseModule))->setData($data)->execute();
 
         return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
     }
@@ -155,12 +169,12 @@ class BaseModuleController extends BaseController
     public function destroy(BaseModule $baseModule): JsonResponse
     {
         try {
-            (new DeleteBaseModuleService($baseModule))->handle();
+            (new DeleteBaseModuleService($baseModule))->execute();
 
             return (new WebSuccessResponse(message: ResponseMessage::DELETED_SUCCESSFULLY->getMessage()))->toResponse();
 
         } catch (Exception $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
     }
 
@@ -173,9 +187,8 @@ class BaseModuleController extends BaseController
         $this->tableColumns = (new TableBuilder())
             ->addColumn(TableColumn::create()->setColumn('id')->setName('#')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('name')->setName('Name')->setIsSortable(true))
-            ->addColumn(TableColumn::create()->setColumn('status')->setName('Status')->setIsSortable(false))
+            ->addColumn(TableColumn::create()->setColumn('status')->setName('Status')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('created_at')->setName('Creation date')->setIsSortable(true))
-            ->addColumn(TableColumn::create()->setColumn('updated_at')->setName('Updated')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('actions')->setName('Actions')->setIsSortable(true))
             ->generate();
     }

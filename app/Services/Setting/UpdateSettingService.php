@@ -19,7 +19,7 @@ class UpdateSettingService extends BaseService
     /**
      * @return void
      */
-    public function update(): void
+    public function execute(): void
     {
         $setting = $this->resource->first();
 

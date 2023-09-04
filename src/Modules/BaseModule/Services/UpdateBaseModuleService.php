@@ -2,7 +2,7 @@
 
 namespace App\Modules\BaseModule\Services;
 
-use App\Enums\ResponseMessage;
+use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Models\BaseModel;
 use App\Foundation\Services\BaseService;
 use App\Modules\BaseModule\Models\BaseModule;
@@ -19,15 +19,17 @@ class UpdateBaseModuleService extends BaseService
     /**
      * @throws Exception
      */
-    public function update(): void
+    public function execute(): void
     {
         try {
             DB::beginTransaction();
+
             $this->resource->update($this->data());
+
             DB::commit();
         } catch (Exception $exception) {
             DB::rollBack();
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
 
     }
@@ -39,13 +41,9 @@ class UpdateBaseModuleService extends BaseService
     {
         $data = [];
 
-        foreach (supportedLanguages() as $language) {
-            $data['name'][$language] = $this->getData('name_' . $language);
-        }
-
-        $data['name'] = json_encode($data['name']);
-        $data['enable_email'] = $this->getData('enable_email') ?? 0;
-
+        $data['name_ar'] = $this->getData('name_ar');
+        $data['name_en'] = $this->getData('name_en');
+        $data['status'] = $this->getData('status');
 
         return $data;
     }

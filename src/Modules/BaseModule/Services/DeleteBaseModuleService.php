@@ -2,23 +2,24 @@
 
 namespace App\Modules\BaseModule\Services;
 
+use App\Foundation\Services\BaseService;
 use App\Modules\BaseModule\Models\BaseModule;
 
-readonly class DeleteBaseModuleService
+class DeleteBaseModuleService extends BaseService
 {
     /**
      * DeleteBaseModuleService constructor.
      *
      * @param BaseModule $model
      */
-    public function __construct(private BaseModule $model)
+    public function __construct(private readonly BaseModule $model)
     {
     }
 
     /**
      * @return void
      */
-    public function handle(): void
+    public function execute(): void
     {
         $this->model->delete();
     }

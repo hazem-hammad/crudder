@@ -19,7 +19,7 @@ class GetSettingService extends BaseService
     /**
      * @return Model|null
      */
-    public function first(): Model|null
+    public function execute(): Model|null
     {
         return $this->collection->query()->first();
     }

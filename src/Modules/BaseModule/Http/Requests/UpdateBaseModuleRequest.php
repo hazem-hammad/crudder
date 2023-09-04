@@ -27,6 +27,7 @@ class UpdateBaseModuleRequest extends FormRequest
 
         $rules['name_ar'] = ['required', 'string'];
         $rules['name_en'] = ['required', 'string'];
+        $rules['status'] = ['required', 'boolean'];
 
         return $rules;
     }

@@ -57,7 +57,11 @@ class TableBuilder
         $columns = new Collection();
 
         foreach ($this->table as $data) {
-            $columns->push(['data' => $data->column, 'orderable' => $data->isSortable, 'searchable' => $data->isSearchable]);
+            $columns->push([
+                'data' => $data->column,
+                'orderable' => $data->isSortable,
+                'searchable' => $data->isSearchable
+            ]);
         }
 
         return $columns;

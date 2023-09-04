@@ -52,7 +52,7 @@ class AuthController extends Controller
             // if successful, then redirect to their intended location
 
             return webResponse([
-                'has_redirect' => true,
+                'hasRedirect' => true,
                 'url' => route('admin.index'),
                 'status' => Response::HTTP_OK,
                 'message' => __('lang.Logged-in successfully')

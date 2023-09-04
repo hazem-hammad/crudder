@@ -567,5 +567,5 @@ return [
     'Export started' => 'Export started',
     'Some thing went wrong'=> 'Some thing went wrong',
     'User'=> 'User',
-    'Send message successfully'=> 'Send message successfully',
+    'Sent successfully'=> 'Sent successfully',
 ];

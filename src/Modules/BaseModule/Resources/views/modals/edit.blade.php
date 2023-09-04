@@ -28,14 +28,20 @@
                          data-kt-scroll-max-height="auto"
                          data-kt-scroll-offset="300px">
                         <div class="collapse show">
-                            @foreach(supportedLanguages() as $language)
-                                <div class="fv-row mb-7">
-                                    <label class="fs-6 fw-bold mb-2">{{__('lang.name_' . $language)}}</label>
-                                    <input type="text" class="form-control form-control-solid" name="name_{{ $language }}"
-                                           value="{{getLocalizedKey($row, 'name', $language)}}"/>
-                                    <div class="invalid-feedback" id="name_{{ $language }}Message"></div>
-                                </div>
-                            @endforeach
+
+                            <x-forms.text-field
+                                name="name_ar"
+                                label="Arabic name"
+                                width="col-12"
+                                value="{{ $row->name_ar }}"
+                            />
+
+                            <x-forms.text-field
+                                name="name_ar"
+                                label="Arabic name"
+                                width="col-12"
+                                value="{{ $row->name_en }}"
+                            />
 
                         </div>
                     </div>

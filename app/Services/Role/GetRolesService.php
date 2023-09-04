@@ -18,7 +18,7 @@ class GetRolesService extends BaseService
     /**
      * @return Collection
      */
-    public function get(): Collection
+    public function execute(): Collection
     {
         return $this->collection->query()->withCount('users')->with('permissions')->get();
     }

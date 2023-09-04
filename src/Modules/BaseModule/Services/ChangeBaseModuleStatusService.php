@@ -12,12 +12,12 @@ class ChangeBaseModuleStatusService extends BaseService
     {
     }
 
-
-    public function change()
+    /**
+     * @return void
+     */
+    public function execute(): void
     {
-        $this->resource->status
-            ? $this->resource->update(['status' => false])
-            : $this->resource->update(['status' => true]);
+        $this->resource->update(['status' => !$this->resource->status]);
     }
 
 }

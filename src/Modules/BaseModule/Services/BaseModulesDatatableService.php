@@ -18,7 +18,7 @@ class BaseModulesDatatableService extends BaseService
      * @return mixed
      * @throws Exception
      */
-    public function get(): JsonResponse
+    public function execute(): JsonResponse
     {
 
         $data = (new GetBaseModulesService())->setFilters($this->filters)->getForDataTable();

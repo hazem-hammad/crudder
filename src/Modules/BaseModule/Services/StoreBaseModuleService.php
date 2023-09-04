@@ -2,7 +2,7 @@
 
 namespace App\Modules\BaseModule\Services;
 
-use App\Enums\ResponseMessage;
+use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Models\BaseModel;
 use App\Foundation\Services\BaseService;
 use App\Modules\BaseModule\Models\BaseModule;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class StoreBaseModuleService extends BaseService
 {
 
-    public function __construct(private readonly BaseModel $collection = new BaseModule())
+    public function __construct(private readonly BaseModel $model = new BaseModule())
     {
     }
 
@@ -20,19 +20,19 @@ class StoreBaseModuleService extends BaseService
      * @return void
      * @throws Exception
      */
-    public function store(): void
+    public function execute(): void
     {
         try {
 
             DB::beginTransaction();
 
-            $this->collection->create($this->data());
+            $this->model->create($this->data());
 
             DB::commit();
 
         } catch (Exception $exception) {
             DB::rollBack();
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
 
     }
@@ -49,6 +49,5 @@ class StoreBaseModuleService extends BaseService
 
         return $data;
     }
-
 
 }

@@ -5,7 +5,7 @@ namespace App\Foundation\Services;
 use App\Foundation\Filters\Filters;
 use App\Foundation\Models\BaseModel;
 
-class BaseService
+abstract class BaseService
 {
     /**
      * @var array
@@ -60,5 +60,11 @@ class BaseService
         $this->filters = $filters;
         return $this;
     }
+
+    /**
+     * Main function in each service
+     * @return BaseModel|bool|void
+     */
+    abstract function execute();
 
 }

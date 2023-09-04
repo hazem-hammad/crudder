@@ -122,7 +122,7 @@
                 </div>
 
                 <div class="menu-item">
-                    <a class="menu-link {{ activeTab('admin.base-modules.index') }} {{ activeTab('admin.base-modules.create') }} {{ activeTab('admin.base-modules.show') }}"
+                    <a class="menu-link {{ activeTab('admin.base-modules.index') }} {{ activeTab('admin.base-modules.create') }} {{ activeTab('admin.base-modules.show') }} {{ activeTab('admin.base-modules.edit') }}"
                        href="{{ route('admin.base-modules.index') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">

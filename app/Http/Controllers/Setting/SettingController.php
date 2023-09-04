@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Setting;
 
-use App\Enums\ResponseMessage;
+use App\Foundation\Enums\ResponseMessage;
+use App\Foundation\Services\General\Auth\GetAuthAdminService;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Http\Requests\Setting\UpdateSettingRequest;
-use App\Services\General\Auth\GetAuthAdminService;
 use App\Services\Setting\GetSettingService;
 use App\Services\Setting\SettingConfigService;
 use App\Services\Setting\UpdateSettingService;
@@ -47,7 +47,7 @@ class SettingController extends Controller
      */
     public function index(): View
     {
-        $setting = (new GetSettingService())->first();
+        $setting = (new GetSettingService())->execute();
         return view($this->config['views']['update'], [
             'setting' => $setting,
             'config' => $this->config,
@@ -63,13 +63,13 @@ class SettingController extends Controller
     {
         try {
             $data = $request->only('reply_ticket', 'close_ticket_after_first_reply');
-            (new UpdateSettingService())->setData($data)->Update();
+            (new UpdateSettingService())->setData($data)->execute();
 
             return (new WebSuccessResponse(
                 message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()
             ))->toResponse();
         } catch (Exception $exception) {
-            throw new Exception(ResponseMessage::SOME_THING_WENT_WRONG->getMessage());
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
     }
 

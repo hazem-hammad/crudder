@@ -4,4 +4,5 @@
                id="flexSwitch30x50" data-route="{{ route($routePath.'.change-status', $row->id) }}"/>
 </div>
 
+
 @include($viewPath.'::modals.edit')

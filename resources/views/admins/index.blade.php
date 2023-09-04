@@ -145,9 +145,9 @@
         let columns = JSON.parse(data);
         let data_url = "{{ route($config['routes']['datatable']) }}";
         let fixed_actions = true;
-        let column_def_data = function (d) {
-            d.name = $('#name').val()
-            d.status = $('#status').val()
+        let column_def_data = function (data) {
+            data.name = $('#name').val()
+            data.status = $('#status').val()
         }
     </script>
 @endsection

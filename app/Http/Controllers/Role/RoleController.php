@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Role;
 
 use App\Enums\Permission;
-use App\Enums\ResponseMessage;
+use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Role\StoreRoleRequest;
@@ -49,7 +49,7 @@ class RoleController extends Controller
 
         $permissions = (new GetPermissionsService())->handle();
 
-        $roles = (new GetRolesService())->get();
+        $roles = (new GetRolesService())->execute();
 
         return view($this->config['views']['index'], [
             'config' => $this->config,
@@ -70,7 +70,7 @@ class RoleController extends Controller
 
         return (new WebSuccessResponse(
             message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
-            has_redirect: true,
+            hasRedirect: true,
             url: route($this->config['routes']['index'])))
             ->toResponse();
 
@@ -106,7 +106,7 @@ class RoleController extends Controller
 
         return (new WebSuccessResponse(
             message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage(),
-            has_redirect: true,
+            hasRedirect: true,
             url: route($this->config['routes']['index'])))->toResponse();
     }
 

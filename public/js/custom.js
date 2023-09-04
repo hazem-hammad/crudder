@@ -51,7 +51,7 @@ $(document).ready(function () {
 
                 $("html, body").animate({scrollTop: 0});
 
-                if (response.has_redirect && response.url) {
+                if (response.hasRedirect && response.url) {
 
                     setTimeout(function () {
                         window.location.replace(response.url);

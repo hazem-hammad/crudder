@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div id="kt_content_container" class="container-xxl">
+    <div id="kt_content_container" class="container-fluid">
         <!--begin::Layout-->
         <div class="d-flex flex-column flex-xl-row">
             <!--begin::Sidebar-->
