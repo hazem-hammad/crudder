@@ -34,6 +34,8 @@ class BaseModuleController extends BaseController
 
     protected bool $deletionAllowed = true;
 
+    protected bool $displayPageStatistics = true;
+
     /**
      * Create a new controller instance.
      *

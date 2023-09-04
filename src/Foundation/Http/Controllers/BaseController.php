@@ -37,16 +37,30 @@ abstract class BaseController extends Controller
     protected array $tableColumns = [];
 
     /**
-     * determine the create/update form will be page or popup
+     * determine the create form will be page or popup
      * @var string
      */
     protected string $createFormType = 'page'; // page - popup
 
     /**
+     * determine the update form will be page or popup
+     * @var string
+     */
+    protected string $updateFormType = 'page'; // page - popup
+
+    /**
      * determine if the delete option is allowed or not
+     *
      * @var bool
      */
     protected bool $deletionAllowed = false;
+
+    /**
+     * determine if the statistics will be displayed beside the table or not
+     *
+     * @var bool
+     */
+    protected bool $displayPageStatistics;
 
     /**
      * @var string
@@ -65,6 +79,7 @@ abstract class BaseController extends Controller
             'tableColumns' => $this->tableColumns,
             'createFormType' => $this->createFormType,
             'deletionAllowed' => $this->deletionAllowed,
+            'displayPageStatistics' => $this->displayPageStatistics,
         ]);
     }
 
