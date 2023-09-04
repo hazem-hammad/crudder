@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\BaseModule\Http\Controllers;
+namespace App\Modules\User\Http\Controllers;
 
 use App\Exceptions\ErrorException;
 use App\Foundation\Builder\TableBuilder;
@@ -8,27 +8,27 @@ use App\Foundation\Builder\TableColumn;
 use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Http\Controllers\BaseController;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
-use App\Modules\BaseModule\Filters\BaseModuleFilters;
-use App\Modules\BaseModule\Http\Requests\CreateBaseModuleRequest;
-use App\Modules\BaseModule\Http\Requests\UpdateBaseModuleRequest;
-use App\Modules\BaseModule\Models\BaseModule;
-use App\Modules\BaseModule\Services\BaseModulesDatatableService;
-use App\Modules\BaseModule\Services\ChangeBaseModuleStatusService;
-use App\Modules\BaseModule\Services\DeleteBaseModuleService;
-use App\Modules\BaseModule\Services\StoreBaseModuleService;
-use App\Modules\BaseModule\Services\UpdateBaseModuleService;
+use App\Modules\User\Filters\UserFilters;
+use App\Modules\User\Http\Requests\CreateUserRequest;
+use App\Modules\User\Http\Requests\UpdateUserRequest;
+use App\Modules\User\Models\User;
+use App\Modules\User\Services\UsersDatatableService;
+use App\Modules\User\Services\ChangeUserStatusService;
+use App\Modules\User\Services\DeleteUserService;
+use App\Modules\User\Services\StoreUserService;
+use App\Modules\User\Services\UpdateUserService;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 
-class BaseModuleController extends BaseController
+class UserController extends BaseController
 {
 
-    protected string $viewPath = "BaseModule";
+    protected string $viewPath = "User";
 
-    public string $routePath = "admin.base-modules";
+    public string $routePath = "admin.users";
 
-    public string $moduleName = "Users";
+    public string $moduleName = "User";
 
     protected string $createFormType = "popup";
 
@@ -66,9 +66,9 @@ class BaseModuleController extends BaseController
      */
     public function datatable(): JsonResponse
     {
-        $filters = new BaseModuleFilters(request());
+        $filters = new UserFilters(request());
 
-        return (new BaseModulesDatatableService())->setFilters($filters)->execute();
+        return (new UsersDatatableService())->setFilters($filters)->execute();
     }
 
     /**
@@ -80,17 +80,17 @@ class BaseModuleController extends BaseController
     }
 
     /**
-     * @param CreateBaseModuleRequest $createBaseModuleRequest
+     * @param CreateUserRequest $createUserRequest
      * @return JsonResponse
      * @throws Exception
      */
-    public function store(CreateBaseModuleRequest $createBaseModuleRequest): JsonResponse
+    public function store(CreateUserRequest $createUserRequest): JsonResponse
     {
         try {
 
-            $data = $createBaseModuleRequest->only('name_ar', 'name_en');
+            $data = $createUserRequest->only('name_ar', 'name_en');
 
-            (new StoreBaseModuleService())->setData($data)->execute();
+            (new StoreUserService())->setData($data)->execute();
 
             return (new WebSuccessResponse(
                 message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
@@ -104,10 +104,10 @@ class BaseModuleController extends BaseController
     }
 
     /**
-     * @param BaseModule $baseModule
+     * @param User $baseModule
      * @return View
      */
-    public function show(BaseModule $baseModule): View
+    public function show(User $baseModule): View
     {
         $supportedLanguages = supportedLanguages();
 
@@ -119,14 +119,14 @@ class BaseModuleController extends BaseController
     }
 
     /**
-     * @param BaseModule $baseModule
+     * @param User $baseModule
      * @return JsonResponse
      * @throws Exception
      */
-    public function changeStatus(BaseModule $baseModule): JsonResponse
+    public function changeStatus(User $baseModule): JsonResponse
     {
         try {
-            (new ChangeBaseModuleStatusService($baseModule))->execute();
+            (new ChangeUserStatusService($baseModule))->execute();
 
             return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
 
@@ -136,10 +136,10 @@ class BaseModuleController extends BaseController
     }
 
     /**
-     * @param BaseModule $baseModule
+     * @param User $baseModule
      * @return View
      */
-    public function edit(BaseModule $baseModule): View
+    public function edit(User $baseModule): View
     {
         return view($this->viewPath . '::edit', [
             'row' => $baseModule
@@ -147,29 +147,29 @@ class BaseModuleController extends BaseController
     }
 
     /**
-     * @param BaseModule $baseModule
-     * @param UpdateBaseModuleRequest $updateBaseModuleRequest
+     * @param User $baseModule
+     * @param UpdateUserRequest $updateUserRequest
      * @return JsonResponse
      * @throws Exception
      */
-    public function update(BaseModule $baseModule, UpdateBaseModuleRequest $updateBaseModuleRequest): JsonResponse
+    public function update(User $baseModule, UpdateUserRequest $updateUserRequest): JsonResponse
     {
-        $data = $updateBaseModuleRequest->only('name_ar', 'name_en', 'status');
+        $data = $updateUserRequest->only('name_ar', 'name_en', 'status');
 
-        (new UpdateBaseModuleService($baseModule))->setData($data)->execute();
+        (new UpdateUserService($baseModule))->setData($data)->execute();
 
         return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
     }
 
     /**
-     * @param BaseModule $baseModule
+     * @param User $baseModule
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(BaseModule $baseModule): JsonResponse
+    public function destroy(User $baseModule): JsonResponse
     {
         try {
-            (new DeleteBaseModuleService($baseModule))->execute();
+            (new DeleteUserService($baseModule))->execute();
 
             return (new WebSuccessResponse(message: ResponseMessage::DELETED_SUCCESSFULLY->getMessage()))->toResponse();
 

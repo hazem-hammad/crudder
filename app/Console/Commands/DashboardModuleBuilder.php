@@ -72,8 +72,12 @@ class DashboardModuleBuilder extends Command
             File::copyDirectory($this->modulesPath . '/BaseModule', $this->modulesPath . '/' . $name);
         }
 
-        // Rename Files
-        if (File::isDirectory($this->modulesPath . '/' . singular_pascal($name) . '/Filters/BaseModuleFilters.php')) {
+        /*****************************
+         * Rename module Files
+         *****************************/
+
+        // Rename & replace content in filters files
+        if (File::isFile($this->modulesPath . '/' . singular_pascal($name) . '/Filters/BaseModuleFilters.php')) {
             rename(
                 $this->modulesPath . '/' . singular_pascal($name) . '/Filters/BaseModuleFilters.php',
                 $this->modulesPath . '/User/Filters/' . singular_pascal($name) . 'Filters.php'
@@ -84,6 +88,26 @@ class DashboardModuleBuilder extends Command
             'BaseModule',
             singular_pascal($name),
             $this->modulesPath . '/User/Filters/' . singular_pascal($name) . 'Filters.php'
+        );
+
+        // Rename & replace content in controllers files
+        if (File::isFile($this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/BaseModuleController.php')) {
+            rename(
+                $this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/BaseModuleController.php',
+                $this->modulesPath . '/User/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
+            );
+        }
+
+        File::replaceInFile(
+            'BaseModule',
+            singular_pascal($name),
+            $this->modulesPath . '/User/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
+        );
+
+        File::replaceInFile(
+            'base-modules',
+            plural_kebab($name),
+            $this->modulesPath . '/User/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
         );
 
         return true;
