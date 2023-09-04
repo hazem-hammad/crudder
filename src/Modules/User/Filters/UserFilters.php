@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\BaseModule\Filters;
+namespace App\Modules\User\Filters;
 
 use App\Foundation\Filters\Filters;
 use Illuminate\Database\Eloquent\Builder;
 
-class BaseModuleFilters extends Filters
+class UserFilters extends Filters
 {
     /**
      * Registered filters to operate upon.
