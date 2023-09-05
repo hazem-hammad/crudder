@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::view('/', 'test-tailwind');
+
 Route::prefix('/admin')->group(function () {
 
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('admin.login');
