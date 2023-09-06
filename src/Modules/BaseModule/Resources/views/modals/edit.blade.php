@@ -7,7 +7,7 @@
                 <div class="modal-header">
                     <h2 class="fw-bolder">
                         Update
-                        <span class="text-primary">{{ getLocalizedKey($row, 'name') }}</span>
+                        <span class="text-primary">{{ $row->name_en }}</span>
                     </h2>
                     <div class="btn btn-icon btn-sm btn-active-icon-primary">
                         <span class="svg-icon svg-icon-1">

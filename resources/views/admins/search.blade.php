@@ -5,8 +5,8 @@
     <select class="form-select form-control-solid form-select-sm datatable-input" data-control="select2"
             data-placeholder="@lang('Select an option')" id="status" name="status">
         <option></option>
-        <option value="{{\App\Enums\ActivationType::ACTIVE->getActivationStatus()}}"> @lang('Active') </option>
-        <option value="{{\App\Enums\ActivationType::IN_ACTIVE->getActivationStatus()}}"> @lang('Inactive') </option>
+        <option value="{{\App\Foundation\Enums\ActivationType::ACTIVE->getActivationStatus()}}"> @lang('Active') </option>
+        <option value="{{\App\Foundation\Enums\ActivationType::IN_ACTIVE->getActivationStatus()}}"> @lang('Inactive') </option>
     </select>
     &nbsp;&nbsp;
 

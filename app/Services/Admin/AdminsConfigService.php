@@ -2,7 +2,7 @@
 
 namespace App\Services\Admin;
 
-use App\Enums\Permission;
+use App\Foundation\Enums\Permissions;
 
 readonly class AdminsConfigService
 {
@@ -87,11 +87,11 @@ readonly class AdminsConfigService
     protected function permissions(): array
     {
         return [
-            'index' => Permission::VIEW_ADMINS,
-            'create' => Permission::CREATE_ADMIN,
-            'update' => Permission::UPDATE_ADMIN,
-            'change-status' => Permission::CHANGE_ADMIN_STATUS,
-            'change-image' => Permission::CHANGE_ADMIN_PROFILE_IMAGE,
+            'index' => Permissions::VIEW_ADMINS,
+            'create' => Permissions::CREATE_ADMIN,
+            'update' => Permissions::UPDATE_ADMIN,
+            'change-status' => Permissions::CHANGE_ADMIN_STATUS,
+            'change-image' => Permissions::CHANGE_ADMIN_PROFILE_IMAGE,
         ];
     }
 }

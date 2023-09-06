@@ -1,5 +1,5 @@
 @php use App\Enums\TicketStatus; @endphp
-@extends('components.layouts.master')
+@extends('Core::layouts.master')
 @section('page-title', 'Dashboard')
 @section('page-sub-title', 'Index')
 @section('content')
@@ -106,13 +106,15 @@
                             <div class="d-flex fs-6 fw-semibold align-items-center">
                                 <div class="bullet w-8px h-6px rounded-2 bg-warning me-3"></div>
                                 <div class="text-gray-500 flex-grow-1 me-4"> Website</div>
-                                <div class="fw-bolder text-gray-700 text-xxl-end"> {{$websitePlatformTicketsCount}}</div>
+                                <div
+                                    class="fw-bolder text-gray-700 text-xxl-end"> {{$websitePlatformTicketsCount}}</div>
                             </div>
 
                             <div class="d-flex fs-6 fw-semibold align-items-center my-3">
                                 <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
                                 <div class="text-gray-500 flex-grow-1 me-4"> Whatsapp</div>
-                                <div class="fw-bolder text-gray-700 text-xxl-end"> {{$whatsappPlatformTicketsCount}}</div>
+                                <div
+                                    class="fw-bolder text-gray-700 text-xxl-end"> {{$whatsappPlatformTicketsCount}}</div>
                             </div>
                         </div>
                     </div>
@@ -156,7 +158,7 @@
                             Tickets By Month
                         </span>
                             <span class="text-primary mt-1 fw-semibold fs-6">
-                            Tickets from {{getLocalizedKey($activeSeason, 'name', 'en')}}
+                            Tickets from bla
                         </span>
                         </h3>
                     </div>
@@ -175,7 +177,7 @@
                             Tickets By Zone
                         </span>
                             <span class="text-primary mt-1 fw-semibold fs-6">
-                            Tickets from {{getLocalizedKey($activeSeason, 'name', 'en')}}
+                            Tickets from bla
                         </span>
                         </h3>
                     </div>
@@ -264,7 +266,7 @@
             data: data = {
                 datasets: [{
                     data:
-                        [12,  43, ]
+                        [12, 43,]
                     ,
                     backgroundColor: [
                         '#6610f2',
@@ -293,7 +295,7 @@
         const totalTicketsByMonthConfig = {
             type: 'line',
             data: data = {
-                labels:  ['dsd', 'sd'],
+                labels: ['dsd', 'sd'],
                 datasets: [{
                     label: 'Tickets',
                     data: [22, 44],
@@ -328,7 +330,7 @@
         const totalTicketsByZoneConfig = {
             type: 'bar',
             data: data = {
-                labels:['sd'],
+                labels: ['sd'],
                 datasets: [{
                     label: 'Tickets',
                     data: [2],
@@ -359,9 +361,8 @@
     </script>
 
     <script>
-        function getStatisticsBySeasonId(element)
-        {
-            let  action = $(element).find(':selected').data('action');
+        function getStatisticsBySeasonId(element) {
+            let action = $(element).find(':selected').data('action');
             window.location = action
 
         }

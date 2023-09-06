@@ -2,15 +2,15 @@
 
 namespace App\Providers;
 
-use App\Enums\Permission;
-use App\View\Components\Actions\DeleteButton;
-use App\View\Components\Actions\EditButton;
-use App\View\Components\Actions\SubmitButton;
-use App\View\Components\Forms\SelectField;
-use App\View\Components\Forms\TextField;
-use App\View\Components\Layouts\Footer;
-use App\View\Components\Layouts\Header;
-use App\View\Components\Layouts\Sidebar;
+use App\Foundation\Enums\Permissions;
+use App\Foundation\View\Components\Actions\DeleteButton;
+use App\Foundation\View\Components\Actions\EditButton;
+use App\Foundation\View\Components\Actions\SubmitButton;
+use App\Foundation\View\Components\Forms\SelectField;
+use App\Foundation\View\Components\Forms\TextField;
+use App\Foundation\View\Components\Layouts\Footer;
+use App\Foundation\View\Components\Layouts\Header;
+use App\Foundation\View\Components\Layouts\Sidebar;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
@@ -40,18 +40,8 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
-        Blade::component('sidebar', Sidebar::class);
-        Blade::component('header', Header::class);
-        Blade::component('footer', Footer::class);
-        Blade::component('submit-button', SubmitButton::class);
-        Blade::component('edit-button', EditButton::class);
-        Blade::component('delete-button', DeleteButton::class);
-
-        Blade::component('text-field', TextField::class);
-        Blade::component('select-field', SelectField::class);
-
         View::composer('*', function ($view) {
-            $permission = Permission::class;
+            $permission = Permissions::class;
             $view->with(['permission' => $permission]);
         });
 

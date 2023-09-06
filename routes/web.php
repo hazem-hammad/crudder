@@ -56,7 +56,7 @@ Route::prefix('/admin')->group(function () {
 
     Route::prefix('admins')->group(function () {
 
-        Route::get('/json/datatable', [AdminsController::class, 'datatable'])->name('admin.admins.datatable');
+        Route::get('/datatable/data', [AdminsController::class, 'datatable'])->name('admin.admins.datatable');
 
         Route::patch('/{admin}/change-status', [AdminsController::class, 'changeStatus'])->name('admin.admins.change-status');
 

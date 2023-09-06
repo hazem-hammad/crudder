@@ -3,7 +3,7 @@
 namespace App\Services\Admin;
 
 
-use App\Enums\ActivationType;
+use App\Foundation\Enums\ActivationType;
 use App\Models\Admin\Admin;
 
 class ChangeAdminStatusService

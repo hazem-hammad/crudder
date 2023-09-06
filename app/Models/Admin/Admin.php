@@ -2,10 +2,11 @@
 
 namespace App\Models\Admin;
 
-use App\Enums\ActivationType;
 use App\Enums\AdminTypes;
 use App\Filters\Admin\AdminFilters;
+use App\Foundation\Enums\ActivationType;
 use App\Foundation\Models\BaseModel;
+use App\Modules\BaseModule\Filters\BaseModuleFilters;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -14,7 +15,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Notifications\Notifiable;
@@ -56,10 +56,10 @@ class Admin extends BaseModel implements
      * Apply all relevant Sizes filters
      *
      * @param Builder $query
-     * @param AdminFilters $filters
+     * @param BaseModuleFilters $filters
      * @return Builder
      */
-    public function scopeFilter(Builder $query, AdminFilters $filters): Builder
+    public function scopeFilter(Builder $query, BaseModuleFilters $filters): Builder
     {
         return $filters->apply($query);
     }
@@ -83,7 +83,7 @@ class Admin extends BaseModel implements
      */
     public function scopeActive(Builder $builder): Builder
     {
-        return $builder->where('status',  ActivationType::ACTIVE->getActivationStatus());
+        return $builder->where('status', ActivationType::ACTIVE->getActivationStatus());
     }
 
     /**
@@ -92,7 +92,7 @@ class Admin extends BaseModel implements
      */
     public function scopeInActive(Builder $builder): Builder
     {
-        return $builder->where('status',  ActivationType::IN_ACTIVE->getActivationStatus());
+        return $builder->where('status', ActivationType::IN_ACTIVE->getActivationStatus());
     }
 
     /**
@@ -101,7 +101,7 @@ class Admin extends BaseModel implements
      */
     public function scopeNotPrimary(Builder $builder): Builder
     {
-        return $builder->where('primary_admin',  AdminTypes::ADMIN->value);
+        return $builder->where('primary_admin', AdminTypes::ADMIN->value);
     }
 
     /**
@@ -110,7 +110,7 @@ class Admin extends BaseModel implements
      */
     public function scopePrimary(Builder $builder): Builder
     {
-        return $builder->where('primary_admin',  AdminTypes::PRIMARY_ADMIN->value);
+        return $builder->where('primary_admin', AdminTypes::PRIMARY_ADMIN->value);
     }
 
     /**

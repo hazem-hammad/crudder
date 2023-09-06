@@ -1,4 +1,4 @@
-@extends('components.layouts.master')
+@extends('Core::layouts.master')
 @section('page-title', 'Update '. plural_lower($moduleName))
 @section('breadcrumbs', $moduleName .' - '. __('Update'))
 

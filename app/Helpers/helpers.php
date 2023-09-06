@@ -16,19 +16,6 @@ function supportedLanguages(): array
 }
 
 /**
- * @param Model|null $model
- * @param string $column
- * @param string $locale
- * @return string|null
- */
-function getLocalizedKey(?Model $model, string $column, string $locale = 'en'): string|null
-{
-    $column = json_decode($model?->$column);
-
-    return optional($column)->$locale;
-}
-
-/**
  * @param string $name
  * @param string|null $class
  * @return string

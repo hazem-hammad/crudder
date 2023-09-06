@@ -5,7 +5,7 @@
                 @csrf
                 <div class="modal-header" id="kt_modal_update_customer_header">
                     <h2 class="fw-bolder">
-                        Create new {{ singular_lower($moduleName) }}
+                        Create new {{ readableName($moduleName) }}
                         <span class="text-primary"></span>
                     </h2>
                     <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal"

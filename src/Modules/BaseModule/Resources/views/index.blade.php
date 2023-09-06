@@ -1,6 +1,6 @@
-@extends('components.layouts.master')
-@section('page-title', $moduleName)
-@section('page-sub-title', "Your $moduleName list here")
+@extends('Core::layouts.master')
+@section('page-title', readableName($moduleName))
+@section('page-sub-title', "Your ". readableName($moduleName) ." list here")
 @section('page-actions')
 @endsection
 
@@ -40,7 +40,7 @@
                                                       fill="currentColor"></rect>
                                             </svg>
                                         </span>
-                                            @lang("Add ". singular_lower($moduleName))
+                                            @lang("Add ". readableName($moduleName))
                                         </a>
                                     </div>
                                 </div>

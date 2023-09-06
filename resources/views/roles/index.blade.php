@@ -1,4 +1,4 @@
-@extends('components.layouts.master')
+@extends('Core::layouts.master')
 @section('page-title', __('lang.Roles'))
 @section('page-sub-title', __('lang.Your roles list here'))
 @section('breadcrumbs', __('lang.Roles'))

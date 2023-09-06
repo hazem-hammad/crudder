@@ -46,6 +46,7 @@ class StoreBaseModuleService extends BaseService
 
         $data['name_ar'] = $this->getData('name_ar');
         $data['name_en'] = $this->getData('name_en');
+        $data['status'] = $this->getData('status');
 
         return $data;
     }

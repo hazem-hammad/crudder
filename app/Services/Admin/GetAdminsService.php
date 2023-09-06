@@ -2,17 +2,13 @@
 
 namespace App\Services\Admin;
 
-use App\Enums\ActivationType;
-use App\Enums\AdminTypes;
-use App\Enums\Datatable;
+use App\Foundation\Enums\Datatable;
+use App\Foundation\Models\BaseModel;
 use App\Foundation\Services\BaseService;
 use App\Foundation\Services\General\Auth\GetAuthAdminService;
 use App\Models\Admin\Admin;
-use App\Foundation\Models\BaseModel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\LazyCollection;
-use Yajra\DataTables\QueryDataTable;
 
 class GetAdminsService extends BaseService
 {
@@ -60,14 +56,6 @@ class GetAdminsService extends BaseService
             ->active()
             ->notPrimary()
             ->count();
-    }
-
-    /**
-     * @return int
-     */
-    public function assignedAdminTodayCount(): int
-    {
-        return 33;
     }
 
     /**

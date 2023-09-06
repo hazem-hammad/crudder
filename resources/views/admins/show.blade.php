@@ -1,4 +1,4 @@
-@extends('components.layouts.master')
+@extends('Core::layouts.master')
 @section('page-title', $config['page_title'])
 @section('page-sub-title', $row->name)
 
@@ -32,25 +32,25 @@
                             <!--end::Position-->
                             <!--begin::Info-->
                             @if(!getAuthAdmin()->primary_admin)
-                            <div class="d-flex flex-wrap flex-center">
-                                <!--begin::Stats-->
-                                <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
-                                    <div class="fs-4 fw-bolder text-gray-700">
-                                        <span class="w-75px">{{$closedTicketsCount}}</span>
+                                <div class="d-flex flex-wrap flex-center">
+                                    <!--begin::Stats-->
+                                    <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
+                                        <div class="fs-4 fw-bolder text-gray-700">
+                                            <span class="w-75px">{{$closedTicketsCount}}</span>
+                                        </div>
+                                        <div class="fw-bold text-muted"> Closed Tickets</div>
                                     </div>
-                                    <div class="fw-bold text-muted"> Closed Tickets</div>
-                                </div>
-                                <!--end::Stats-->
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                <!--begin::Stats-->
-                                <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
-                                    <div class="fs-4 fw-bolder text-gray-700">
-                                        44
+                                    <!--end::Stats-->
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                                    <!--begin::Stats-->
+                                    <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                                        <div class="fs-4 fw-bolder text-gray-700">
+                                            44
+                                        </div>
+                                        <div class="fw-bold text-muted">Open tickets</div>
                                     </div>
-                                    <div class="fw-bold text-muted">Open tickets</div>
+                                    <!--end::Stats-->
                                 </div>
-                                <!--end::Stats-->
-                            </div>
                             @endif
                             <!--end::Info-->
                         </div>
@@ -146,7 +146,8 @@
                                                 </span>
                                                 <!--end::Svg Icon-->
                                                 <div
-                                                    class="text-white fw-bolder fs-2 mb-2 mt-5">23 / 43</div>
+                                                    class="text-white fw-bolder fs-2 mb-2 mt-5">23 / 43
+                                                </div>
                                                 <div class="fw-bold text-white"> Today / Total tickets
                                                 </div>
                                             </div>
@@ -154,13 +155,13 @@
                                         </div>
                                         <!--end::Statistics Widget 5-->
                                     </div>
-                                @if(true)
-                                    <div class="col-xl-4">
-                                        <div class="card bg-primary hoverable card-xl-stretch mb-xl-8">
-                                            <!--begin::Body-->
-                                            <div class="card-body">
-                                                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                                <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
+                                    @if(true)
+                                        <div class="col-xl-4">
+                                            <div class="card bg-primary hoverable card-xl-stretch mb-xl-8">
+                                                <!--begin::Body-->
+                                                <div class="card-body">
+                                                    <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
+                                                    <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                          viewBox="0 0 24 24" fill="none">
                                                         <path opacity="0.3"
@@ -171,23 +172,23 @@
                                                             fill="white"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->
-                                                <div class="text-white mb-2 mt-5">
-                                                    <span class="fw-bolder fs-2"> 54 </span>
+                                                    <!--end::Svg Icon-->
+                                                    <div class="text-white mb-2 mt-5">
+                                                        <span class="fw-bolder fs-2"> 54 </span>
+                                                    </div>
+                                                    <div class="fw-bold text-white"> Open tickets</div>
                                                 </div>
-                                                <div class="fw-bold text-white"> Open tickets</div>
+                                                <!--end::Body-->
                                             </div>
-                                            <!--end::Body-->
                                         </div>
-                                    </div>
-                                @endif
-                                @if(true)
-                                    <div class="col-xl-4">
-                                        <div class="card bg-success hoverable card-xl-stretch mb-xl-8">
-                                            <!--begin::Body-->
-                                            <div class="card-body">
-                                                <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
-                                                <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
+                                    @endif
+                                    @if(true)
+                                        <div class="col-xl-4">
+                                            <div class="card bg-success hoverable card-xl-stretch mb-xl-8">
+                                                <!--begin::Body-->
+                                                <div class="card-body">
+                                                    <!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
+                                                    <span class="svg-icon svg-icon-white svg-icon-3x ms-n1">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                          viewBox="0 0 24 24" fill="none">
                                                         <path opacity="0.3"
@@ -198,16 +199,16 @@
                                                             fill="white"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->
-                                                <div class="text-white mb-2 mt-5">
-                                                    <span class="fw-bolder fs-2"> 2023-09-13 </span>
+                                                    <!--end::Svg Icon-->
+                                                    <div class="text-white mb-2 mt-5">
+                                                        <span class="fw-bolder fs-2"> 2023-09-13 </span>
+                                                    </div>
+                                                    <div class="fw-bold text-white">Last assigned ticket</div>
                                                 </div>
-                                                <div class="fw-bold text-white">Last assigned ticket</div>
+                                                <!--end::Body-->
                                             </div>
-                                            <!--end::Body-->
                                         </div>
-                                    </div>
-                                @endif
+                                    @endif
                                 </div>
                             </div>
                             <!--end::Card body-->

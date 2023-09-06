@@ -28,7 +28,7 @@ class BaseModuleController extends BaseController
 
     public string $routePath = "admin.base-modules";
 
-    public string $moduleName = "Users";
+    public string $moduleName = "BaseModule";
 
     protected string $createFormType = "popup";
 
@@ -88,7 +88,7 @@ class BaseModuleController extends BaseController
     {
         try {
 
-            $data = $createBaseModuleRequest->only('name_ar', 'name_en');
+            $data = $createBaseModuleRequest->only('name_ar', 'name_en', 'status');
 
             (new StoreBaseModuleService())->setData($data)->execute();
 

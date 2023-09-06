@@ -1,4 +1,4 @@
-@extends('components.layouts.master')
+@extends('Core::layouts.master')
 @section('page-title', $config['page_title'])
 @section('breadcrumbs', $config['page_title'] .' - '. __('Create'))
 

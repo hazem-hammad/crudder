@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Role;
 
-use App\Enums\Permission;
+use App\Foundation\Enums\Permissions;
 use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Http\Controllers\Controller;
@@ -45,7 +45,7 @@ class RoleController extends Controller
      */
     public function index(): View
     {
-        $permissionsEnum = Permission::class;
+        $permissionsEnum = Permissions::class;
 
         $permissions = (new GetPermissionsService())->handle();
 
@@ -82,7 +82,7 @@ class RoleController extends Controller
      */
     public function show(Role $role): View
     {
-        $permissionsEnum = Permission::class;
+        $permissionsEnum = Permissions::class;
 
         $permissions = (new GetPermissionsService())->handle();
 

@@ -12,6 +12,8 @@ enum ResponseMessage
     case REPLY_ADDED_SUCCESSFULLY;
     case SENT_SUCCESSFULLY;
 
+    case LOGGED_OUT_SUCCESSFULLY;
+
     public function getMessage(): string
     {
         return match ($this) {
@@ -22,6 +24,7 @@ enum ResponseMessage
             self::UNABLE_TO_UPLOAD_FILE => __('lang.Unable to upload file'),
             self::REPLY_ADDED_SUCCESSFULLY => __('lang.Reply added successfully'),
             self::SENT_SUCCESSFULLY => __('lang.Sent successfully'),
+            self::LOGGED_OUT_SUCCESSFULLY => __('lang.Logged out successfully'),
         };
     }
 }

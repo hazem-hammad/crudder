@@ -18,7 +18,7 @@ class DatatableAdminsService extends BaseService
      * @return JsonResponse
      * @throws Exception
      */
-    public function handle(): JsonResponse
+    public function execute(): JsonResponse
     {
         $this->config = (new AdminsConfigService())->get();
 

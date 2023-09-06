@@ -2,7 +2,7 @@
 
 namespace App\Modules\BaseModule\Services;
 
-use App\Enums\Datatable;
+use App\Foundation\Enums\Datatable;
 use App\Foundation\Models\BaseModel;
 use App\Foundation\Services\BaseService;
 use App\Modules\BaseModule\Models\BaseModule;

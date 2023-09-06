@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Filters\Admin\AdminFilters;
-use App\Filters\Ticket\TicketFilters;
 use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Services\General\Auth\GetAuthAdminService;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
@@ -11,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreAdminRequest;
 use App\Http\Requests\Admin\UpdateAdminRequest;
 use App\Models\Admin\Admin;
+use App\Modules\BaseModule\Filters\BaseModuleFilters;
 use App\Services\Admin\AdminsConfigService;
 use App\Services\Admin\AdminsDatatableBuilderService;
 use App\Services\Admin\ChangeAdminStatusService;
@@ -53,12 +52,10 @@ class AdminController extends Controller
     {
         $datatable = (new AdminsDatatableBuilderService())->data();
         $activeAdminsCount = (new GetAdminsService())->count();
-        $assignedAdminTodayCount = (new GetAdminsService())->AssignedAdminTodayCount();
         return view($this->config['views']['index'], [
             'config' => $this->config,
             'datatable' => $datatable,
             'activeAdminsCount' => $activeAdminsCount,
-            'assignedAdminTodayCount' => $assignedAdminTodayCount,
 
         ]);
     }
@@ -71,8 +68,8 @@ class AdminController extends Controller
      */
     public function datatable(): JsonResponse
     {
-        $filters = new AdminFilters(request());
-        return (new DatatableAdminsService())->setFilters($filters)->handle();
+        $filters = new BaseModuleFilters(request());
+        return (new DatatableAdminsService())->setFilters($filters)->execute();
     }
 
     /**

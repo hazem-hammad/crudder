@@ -2,17 +2,16 @@
 
 namespace App\Modules\BaseModule\Models;
 
-use App\Enums\ActivationType;
+use App\Foundation\Enums\ActivationType;
 use App\Foundation\Models\BaseModel;
 use App\Modules\BaseModule\Filters\BaseModuleFilters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BaseModel
+ * Class BaseModule
  * @mixin Builder
- * @package App\Foundation\Models
+ * @package App\Modules\BaseModule\Models
  */
 class BaseModule extends BaseModel
 {

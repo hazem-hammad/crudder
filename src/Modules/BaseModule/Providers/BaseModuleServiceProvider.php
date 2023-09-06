@@ -3,7 +3,6 @@
 namespace App\Modules\BaseModule\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use View;
 
 class BaseModuleServiceProvider extends ServiceProvider
 {
@@ -63,6 +62,6 @@ class BaseModuleServiceProvider extends ServiceProvider
 //            $this->configPath => config_path('bla.php'),
 //        ], 'Config');
 //
-        View::addNamespace('BaseModule', realpath($this->view_path));
+        \View::addNamespace('BaseModule', realpath($this->view_path));
     }
 }

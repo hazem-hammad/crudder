@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Foundation\Enums\ResponseMessage;
+use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -38,6 +41,7 @@ class AuthController extends Controller
      * @param Request $request
      * @return JsonResponse
      * @throws ValidationException
+     * @throws Exception
      */
     public function login(Request $request): JsonResponse
     {
@@ -49,14 +53,9 @@ class AuthController extends Controller
 
         // Attempt to log the user in
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 'active'])) {
-            // if successful, then redirect to their intended location
 
-            return webResponse([
-                'hasRedirect' => true,
-                'url' => route('admin.index'),
-                'status' => Response::HTTP_OK,
-                'message' => __('lang.Logged-in successfully')
-            ]);
+            // if successful, then redirect to their intended location
+            return (new WebSuccessResponse(message: ResponseMessage::LOGGED_OUT_SUCCESSFULLY->getMessage()))->toResponse();
         }
 
         return webResponse([
@@ -71,7 +70,7 @@ class AuthController extends Controller
     /**
      * @return Application|RedirectResponse|Redirector
      */
-    public function logout()
+    public function logout(): Redirector|RedirectResponse|Application
     {
         Auth::guard('admin')->logout();
         return redirect(route('admin.login'));

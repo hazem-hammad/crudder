@@ -1,4 +1,4 @@
-@extends('components.layouts.master')
+@extends('Core::layouts.master')
 @section('page-title', __('lang.Roles'))
 @section('breadcrumbs', $config['page_title'] .' - '. __('lang.Show'))
 
@@ -74,20 +74,20 @@
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
                                     <span class="svg-icon svg-icon-1 position-absolute ms-6">
 {{--                                        <svg xmlns="http://www.w3.org/2000/svg" width="24"--}}
-{{--                                             height="24" viewBox="0 0 24 24" fill="none">--}}
-{{--                                            <rect opacity="0.5" x="17.0365" y="15.1223"--}}
-{{--                                                  width="8.15546" height="2" rx="1"--}}
-{{--                                                  transform="rotate(45 17.0365 15.1223)"--}}
-{{--                                                  fill="black"></rect>--}}
-{{--                                            <path--}}
-{{--                                                d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"--}}
-{{--                                                fill="black"></path>--}}
-{{--                                        </svg>--}}
-{{--                                    </span>--}}
-                                    <!--end::Svg Icon-->
-{{--                                    <input type="text" data-kt-roles-table-filter="search"--}}
-{{--                                           class="form-control form-control-solid w-250px ps-15"--}}
-{{--                                           placeholder="Search Users">--}}
+                                        {{--                                             height="24" viewBox="0 0 24 24" fill="none">--}}
+                                        {{--                                            <rect opacity="0.5" x="17.0365" y="15.1223"--}}
+                                        {{--                                                  width="8.15546" height="2" rx="1"--}}
+                                        {{--                                                  transform="rotate(45 17.0365 15.1223)"--}}
+                                        {{--                                                  fill="black"></rect>--}}
+                                        {{--                                            <path--}}
+                                        {{--                                                d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z"--}}
+                                        {{--                                                fill="black"></path>--}}
+                                        {{--                                        </svg>--}}
+                                        {{--                                    </span>--}}
+                                        <!--end::Svg Icon-->
+                                    {{--                                    <input type="text" data-kt-roles-table-filter="search"--}}
+                                    {{--                                           class="form-control form-control-solid w-250px ps-15"--}}
+                                    {{--                                           placeholder="Search Users">--}}
                                 </div>
                                 <!--end::Search-->
                                 <!--begin::Group actions-->
@@ -111,8 +111,8 @@
                             <div id="kt_roles_view_table_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                 <div class="table-responsive">
                                     <table
-                                        class="table align-middle table-row-dashed fs-6 gy-5 mb-0 dataTable no-footer"
-                                        id="kt_roles_view_table">
+                                            class="table align-middle table-row-dashed fs-6 gy-5 mb-0 dataTable no-footer"
+                                            id="kt_roles_view_table">
                                         <!--begin::Table head-->
                                         <thead>
                                         <!--begin::Table row-->
@@ -183,16 +183,16 @@
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="24"
                                                                  height="24" viewBox="0 0 24 24" fill="none">
                                                                 <path
-                                                                    d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                                    fill="black"></path>
+                                                                        d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
+                                                                        fill="black"></path>
                                                             </svg>
                                                         </span>
                                                         <!--end::Svg Icon-->
                                                     </a>
                                                     <!--begin::Menu-->
                                                     <div
-                                                        class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                        data-kt-menu="true">
+                                                            class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
+                                                            data-kt-menu="true">
                                                         <!--begin::Menu item-->
                                                         <div class="menu-item px-3">
                                                             <a href="{{ route('admin.admins.show', $user->id) }}"

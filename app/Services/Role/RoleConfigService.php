@@ -2,7 +2,7 @@
 
 namespace App\Services\Role;
 
-use App\Enums\Permission;
+use App\Foundation\Enums\Permissions;
 
 readonly class RoleConfigService
 {
@@ -79,9 +79,9 @@ readonly class RoleConfigService
     protected function permissions(): array
     {
         return [
-            'index' => Permission::VIEW_ROLES,
-            'create' => Permission::CREATE_ROLE,
-            'update' => Permission::UPDATE_ROLE
+            'index' => Permissions::VIEW_ROLES,
+            'create' => Permissions::CREATE_ROLE,
+            'update' => Permissions::UPDATE_ROLE
         ];
     }
 }

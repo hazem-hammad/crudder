@@ -3,10 +3,10 @@
 namespace App\Services\Admin;
 
 use App\Enums\AdminTypes;
-use App\Enums\ActivationType;
+use App\Foundation\Enums\ActivationType;
+use App\Foundation\Models\BaseModel;
 use App\Foundation\Services\BaseService;
 use App\Models\Admin\Admin;
-use App\Foundation\Models\BaseModel;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 
