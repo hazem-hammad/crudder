@@ -13,7 +13,6 @@ class PasswordField extends Component
      * Create the component instance.
      *
      * @param string $name
-     * @param array $options
      * @param string|null $label
      * @param string|null $width
      * @param string|null $id
@@ -21,7 +20,6 @@ class PasswordField extends Component
      */
     public function __construct(
         public string  $name,
-        public array   $options,
         public ?string $label = '',
         public ?string $width = null,
         public ?string $id = null,

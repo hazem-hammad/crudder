@@ -25,6 +25,6 @@ class Header extends Component
      */
     public function render(): View
     {
-        return view('Core::layouts.header');
+        return view('Core::components.layouts.header');
     }
 }

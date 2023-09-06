@@ -13,7 +13,6 @@ class EmailField extends Component
      * Create the component instance.
      *
      * @param string $name
-     * @param array $options
      * @param string|null $label
      * @param string|null $width
      * @param string|null $value
@@ -22,12 +21,11 @@ class EmailField extends Component
      */
     public function __construct(
         public string  $name,
-        public array   $options,
         public ?string $label = '',
         public ?string $width = null,
         public ?string $value = null,
         public ?string $id = null,
-        public ?bool $isMultiple = false
+        public ?bool   $isMultiple = false
     )
     {
     }

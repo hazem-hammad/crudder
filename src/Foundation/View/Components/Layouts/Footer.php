@@ -25,6 +25,6 @@ class Footer extends Component
      */
     public function render(): View
     {
-        return view('Core::layouts.footer');
+        return view('Core::components.layouts.footer');
     }
 }

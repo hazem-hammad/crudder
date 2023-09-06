@@ -14,6 +14,12 @@
         value="{{ isset($row) ? $row->name_en : null }}"
     />
 
+    <x-forms.password-field
+        name="name_en"
+        label="Password"
+        width="col-12"
+    />
+
     <x-forms.select-field
         name="status"
         label="Select status"

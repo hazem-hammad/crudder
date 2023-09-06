@@ -28,6 +28,6 @@ class Sidebar extends Component
     {
         $user = (new GetAuthAdminService())->get();
 
-        return view('Core::layouts.sidebar', ['user' => $user]);
+        return view('Core::components.layouts.sidebar', ['user' => $user]);
     }
 }
