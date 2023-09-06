@@ -5,6 +5,7 @@ namespace App\Modules\BaseModule\Http\Controllers;
 use App\Exceptions\ErrorException;
 use App\Foundation\Builder\TableBuilder;
 use App\Foundation\Builder\TableColumn;
+use App\Foundation\Enums\Permissions;
 use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Http\Controllers\BaseController;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
@@ -26,9 +27,9 @@ class BaseModuleController extends BaseController
 
     protected string $viewPath = "BaseModule";
 
-    public string $routePath = "admin.base-modules";
+    protected string $routePath = "admin.base-modules";
 
-    public string $moduleName = "BaseModule";
+    protected string $moduleName = "BaseModule";
 
     protected string $createFormType = "popup";
 
@@ -40,12 +41,16 @@ class BaseModuleController extends BaseController
      * Create a new controller instance.
      *
      * @return void
+     * @throws Exception
      */
     public function __construct()
     {
         parent::__construct();
 
-        app()->setLocale('en');
+        $this->middleware('permission:' . $this->permissions('list'))->only(['index', 'datatable']);
+        $this->middleware('permission:' . $this->permissions('create'))->only(['create', 'store']);
+        $this->middleware('permission:' . $this->permissions('update'))->only(['edit', 'update']);
+        $this->middleware('permission:' . $this->permissions('show'))->only(['show']);
 
         $this->middleware('auth:admin');
     }
@@ -53,7 +58,7 @@ class BaseModuleController extends BaseController
     /**
      * @return View
      */
-    public function index(): View
+    protected function index(): View
     {
         return $this->view($this->viewPath . '::index', [
             'table' => $this->tableColumns,
@@ -64,7 +69,7 @@ class BaseModuleController extends BaseController
      * @return JsonResponse
      * @throws Exception
      */
-    public function datatable(): JsonResponse
+    protected function datatable(): JsonResponse
     {
         $filters = new BaseModuleFilters(request());
 
@@ -74,7 +79,7 @@ class BaseModuleController extends BaseController
     /**
      * @return View
      */
-    public function create(): View
+    protected function create(): View
     {
         return view($this->viewPath . '::create');
     }
@@ -84,7 +89,7 @@ class BaseModuleController extends BaseController
      * @return JsonResponse
      * @throws Exception
      */
-    public function store(CreateBaseModuleRequest $createBaseModuleRequest): JsonResponse
+    protected function store(CreateBaseModuleRequest $createBaseModuleRequest): JsonResponse
     {
         try {
 
@@ -107,7 +112,7 @@ class BaseModuleController extends BaseController
      * @param BaseModule $baseModule
      * @return View
      */
-    public function show(BaseModule $baseModule): View
+    protected function show(BaseModule $baseModule): View
     {
         $supportedLanguages = supportedLanguages();
 
@@ -123,7 +128,7 @@ class BaseModuleController extends BaseController
      * @return JsonResponse
      * @throws Exception
      */
-    public function changeStatus(BaseModule $baseModule): JsonResponse
+    protected function changeStatus(BaseModule $baseModule): JsonResponse
     {
         try {
             (new ChangeBaseModuleStatusService($baseModule))->execute();
@@ -139,7 +144,7 @@ class BaseModuleController extends BaseController
      * @param BaseModule $baseModule
      * @return View
      */
-    public function edit(BaseModule $baseModule): View
+    protected function edit(BaseModule $baseModule): View
     {
         return view($this->viewPath . '::edit', [
             'row' => $baseModule
@@ -152,7 +157,7 @@ class BaseModuleController extends BaseController
      * @return JsonResponse
      * @throws Exception
      */
-    public function update(BaseModule $baseModule, UpdateBaseModuleRequest $updateBaseModuleRequest): JsonResponse
+    protected function update(BaseModule $baseModule, UpdateBaseModuleRequest $updateBaseModuleRequest): JsonResponse
     {
         $data = $updateBaseModuleRequest->only('name_ar', 'name_en', 'status');
 
@@ -166,7 +171,7 @@ class BaseModuleController extends BaseController
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy(BaseModule $baseModule): JsonResponse
+    protected function destroy(BaseModule $baseModule): JsonResponse
     {
         try {
             (new DeleteBaseModuleService($baseModule))->execute();
@@ -176,6 +181,23 @@ class BaseModuleController extends BaseController
         } catch (Exception $exception) {
             throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
+    }
+
+    /**
+     * @param string $function
+     * @return string
+     * @throws Exception
+     */
+    private function permissions(string $function): string
+    {
+        return match ($function) {
+            'list' => Permissions::VIEW_BASE_MODULES,
+            'create' => Permissions::CREATE_BASE_MODULE,
+            'update' => Permissions::UPDATE_BASE_MODULE,
+            'show' => Permissions::SHOW_BASE_MODULE,
+            default => throw new Exception(ResponseMessage::UNKNOWN_PERMISSION->getMessage()),
+        };
+
     }
 
     /**

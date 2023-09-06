@@ -11883,9 +11883,6 @@ video {
 .p-6 {
   padding: 1.5rem;
 }
-.p-2 {
-  padding: 0.5rem;
-}
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -11985,16 +11982,8 @@ video {
 .align-middle {
   vertical-align: middle;
 }
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
 .text-7xl {
   font-size: 4.5rem;
-  line-height: 1;
-}
-.text-8xl {
-  font-size: 6rem;
   line-height: 1;
 }
 .font-bold {

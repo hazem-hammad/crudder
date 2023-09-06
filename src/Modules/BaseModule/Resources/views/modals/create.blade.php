@@ -1,4 +1,4 @@
-<div class="modal fade" id="create_modal">
+<div class="modal fade" id="create_modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <div class="modal-content">
             <form class="form" method="POST" action="{{ route($routePath . '.store') }}">

@@ -84,50 +84,6 @@
                                        title="Allowed file types: png, jpg, jpeg."></i>
                                 </label>
                                 <!--end::Label-->
-                                <!--begin::Image input wrapper-->
-                                @can($permission::CHANGE_ADMIN_PROFILE_IMAGE)
-                                    <div class="mt-1">
-                                        <!--begin::Image input-->
-                                        <div class="image-input image-input-outline" data-kt-image-input="true"
-                                             style="background-image: url({{ $row->getMedia('profile_image') }})">
-                                            <!--begin::Preview existing avatar-->
-                                            <div class="image-input-wrapper w-125px h-125px"
-                                                 style="background-image: url({{ $row->getMedia('profile_image') }})"></div>
-                                            <!--end::Preview existing avatar-->
-                                            <!--begin::Edit-->
-                                            <label
-                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                data-kt-image-input-action="change" data-bs-toggle="tooltip"
-                                                title="Change avatar">
-                                                <i class="bi bi-pencil-fill fs-7"></i>
-                                                <!--begin::Inputs-->
-                                                <input type="file" name="profile_image" accept=".png, .jpg, .jpeg"/>
-                                                <input type="hidden" name="avatar_remove"/>
-                                                <!--end::Inputs-->
-                                            </label>
-                                            <!--end::Edit-->
-                                            <!--begin::Cancel-->
-                                            <span
-                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                data-kt-image-input-action="cancel" data-bs-toggle="tooltip"
-                                                title="Cancel avatar">
-                                            <i class="bi bi-x fs-2"></i>
-                                        </span>
-                                            <!--end::Cancel-->
-                                            <!--begin::Remove-->
-                                            <span
-                                                class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
-                                                data-kt-image-input-action="remove" data-bs-toggle="tooltip"
-                                                title="Remove avatar">
-                                            <i class="bi bi-x fs-2"></i>
-                                        </span>
-                                            <!--end::Remove-->
-                                        </div>
-                                        <!--end::Image input-->
-                                    </div>
-                                @endcan
-
-                                <!--end::Image input wrapper-->
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->

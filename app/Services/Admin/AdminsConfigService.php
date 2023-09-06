@@ -91,7 +91,6 @@ readonly class AdminsConfigService
             'create' => Permissions::CREATE_ADMIN,
             'update' => Permissions::UPDATE_ADMIN,
             'change-status' => Permissions::CHANGE_ADMIN_STATUS,
-            'change-image' => Permissions::CHANGE_ADMIN_PROFILE_IMAGE,
         ];
     }
 }

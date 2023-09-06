@@ -2,7 +2,6 @@
 
 namespace App\Foundation\Http\Controllers;
 
-use App\Foundation\Builder\TableBuilder;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -89,6 +88,11 @@ abstract class BaseController extends Controller
      */
     abstract protected function table(): void;
 
+    /**
+     * @param string $view
+     * @param array $variable
+     * @return Factory|View|Application
+     */
     protected function view(string $view, array $variable = []): Factory|View|Application
     {
         return view($view, $variable);

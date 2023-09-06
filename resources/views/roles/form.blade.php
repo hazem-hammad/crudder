@@ -75,16 +75,6 @@
                     </label>
                     <!--end::Checkbox-->
 
-                    <!--begin::Checkbox-->
-                    <label
-                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                        <input class="form-check-input" type="checkbox"
-                               value="{{ $permissionsEnum::CHANGE_ADMIN_PROFILE_IMAGE }}"
-                               {{optional($row)->hasPermissionTo($permissionsEnum::CHANGE_ADMIN_PROFILE_IMAGE) ? 'checked' : '' }}
-                               name="permissions[]">
-                        <span class="form-check-label"> Change profile image </span>
-                    </label>
-                    <!--end::Checkbox-->
                 </div>
                 <!--end::Wrapper-->
             </td>

@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center position-relative my-1">
     <input type="text" name="name" id="name"
            class="form-control form-control-sm datatable-input"
-           placeholder="@lang('Search '. plural_lower($moduleName))">
+           placeholder="@lang('Search')">
     &nbsp;&nbsp;
     <select class="form-select form-control-solid form-select-sm datatable-input" data-control="select2"
             data-placeholder="@lang('Select an option')" id="status" name="status">

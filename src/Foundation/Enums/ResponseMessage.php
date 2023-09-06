@@ -11,8 +11,8 @@ enum ResponseMessage
     case UNABLE_TO_UPLOAD_FILE;
     case REPLY_ADDED_SUCCESSFULLY;
     case SENT_SUCCESSFULLY;
-
     case LOGGED_OUT_SUCCESSFULLY;
+    case UNKNOWN_PERMISSION;
 
     public function getMessage(): string
     {
@@ -25,6 +25,7 @@ enum ResponseMessage
             self::REPLY_ADDED_SUCCESSFULLY => __('lang.Reply added successfully'),
             self::SENT_SUCCESSFULLY => __('lang.Sent successfully'),
             self::LOGGED_OUT_SUCCESSFULLY => __('lang.Logged out successfully'),
+            self::UNKNOWN_PERMISSION => __('lang.Unknown permission'),
         };
     }
 }

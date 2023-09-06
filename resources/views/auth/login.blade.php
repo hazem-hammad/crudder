@@ -102,7 +102,6 @@
 <!--begin::Javascript-->
 <script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
 <script src="{{ asset('js/scripts.bundle.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 
 </body>

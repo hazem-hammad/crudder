@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use Laravel\Passport\Passport;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -22,14 +21,9 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
-
-//
-//        Gate::before(function ($user, $ability) {
-//            return true;
-//        });
 
         Gate::before(function ($user, $ability) {
             return (bool)in_array($user->primary_admin, [1, 2]);

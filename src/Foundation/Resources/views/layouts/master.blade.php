@@ -28,14 +28,22 @@
     <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/custom.style.css') }}" rel="stylesheet" type="text/css"/>
+{{--    <link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
     <!--end::Global Stylesheets Bundle-->
 </head>
 <!--end::Head-->
 <!--begin::Body-->
 <body id="kt_body" class="header-tablet-and-mobile-fixed aside-enabled">
 <!--begin::Theme mode setup on page load-->
-<script>var defaultThemeMode = "light";
-    var themeMode;
+
+<script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
+<script src="{{ asset('js/scripts.bundle.js') }}"></script>
+<script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
+
+<script>
+    const defaultThemeMode = "light";
+    let themeMode;
     if (document.documentElement) {
         if (document.documentElement.hasAttribute("data-theme-mode")) {
             themeMode = document.documentElement.getAttribute("data-theme-mode");
@@ -50,14 +58,14 @@
             themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         }
         document.documentElement.setAttribute("data-theme", themeMode);
-    }</script>
+    }
+</script>
 <!--end::Theme mode setup on page load-->
 <!--begin::Main-->
 <!--begin::Root-->
 <div class="d-flex flex-column flex-root">
     <!--begin::Page-->
     <div class="page d-flex flex-row flex-column-fluid">
-
         <!--begin::Aside-->
         <x-layouts.sidebar/>
         <!--end::Aside-->
@@ -97,17 +105,11 @@
 <!--begin::Drawers-->
 
 <!--begin::Javascript-->
-<script src="{{ asset('plugins/global/plugins.bundle.js') }}"></script>
-<script src="{{ asset('js/scripts.bundle.js') }}"></script>
 
-<script src="{{ asset('plugins/custom/datatables/datatables.bundle.js') }}"></script>
-<script src="{{ asset('plugins/custom/datatables/datatable.custom.js') }}"></script>
+{{--<script src="{{ asset('js/widgets.bundle.js') }}"></script>--}}
+{{--<script src="{{ asset('js/custom/widgets.js') }}"></script>--}}
 
-<script src="{{ asset('js/widgets.bundle.js') }}"></script>
-<script src="{{ asset('js/custom/widgets.js') }}"></script>
-
-<script src="{{ asset('js/custom.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+{{--<script src="{{ asset('js/app.js') }}"></script>--}}
 @yield('scripts')
 
 <!--end::Custom Javascript-->
