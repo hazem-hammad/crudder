@@ -12,6 +12,8 @@ class ServiceProvider extends BaseServiceProvider
 
         $this->app->register('App\Modules\BaseModule\Providers\BaseModuleServiceProvider');
 
+        $this->app->register('App\Modules\User\Providers\UserServiceProvider');
+
         // Append service providers here //
     }
 }

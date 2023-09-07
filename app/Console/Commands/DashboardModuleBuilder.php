@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use function Laravel\Prompts\text;
 
 class DashboardModuleBuilder extends Command
 {
@@ -18,7 +19,7 @@ class DashboardModuleBuilder extends Command
      *
      * @var string
      */
-    protected $signature = 'module:generate {name : Class (singular) for example User}';
+    protected $signature = 'module:generate';
 
     /**
      * The console command description.
@@ -40,11 +41,12 @@ class DashboardModuleBuilder extends Command
      */
     public function handle(): void
     {
-        $name = $this->argument('name');
+        $name = text(
+            label: 'Enter your module name.',
+            placeholder: 'Should be in pascal case (User, TestModule)',
+        );
 
         $this->createModuleFolders($name);
-
-//        File::append(base_path('routes/api.php'), 'Route::resource(\'' . str_plural(strtolower($name)) . "', '{$name}Controller');");
     }
 
     /**
@@ -398,7 +400,7 @@ class DashboardModuleBuilder extends Command
         File::replaceInFile(
             '{{-- Append service providers here --}}',
             $content,
-            $this->coresPath . '/Resources/views/layouts/sidebar.blade.php'
+            $this->coresPath . '/Resources/views/components/layouts/sidebar.blade.php'
         );
     }
 
