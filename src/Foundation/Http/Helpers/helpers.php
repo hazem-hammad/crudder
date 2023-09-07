@@ -98,5 +98,15 @@ function plural_camel(string $string): string
 function readableName(string $string): string
 {
     return Str::replace('_', ' ', strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string)));
+}
 
+/**
+ * Get singular and camel from given string
+ *
+ * @param string $string
+ * @return string
+ */
+function singular_capital(string $string): string
+{
+    return Str::singular(Str::upper($string));
 }

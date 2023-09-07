@@ -138,28 +138,20 @@ class DashboardModuleBuilder extends Command
      */
     private function adjustControllers(string $name): void
     {
+        $controllerPath = $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php';
+
         $this->rename(
             $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/BaseModuleController.php',
-            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
+            $controllerPath
         );
 
-        File::replaceInFile(
-            'BaseModule',
-            singular_studly($name),
-            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
-        );
+        File::replaceInFile('BaseModule', singular_studly($name), $controllerPath);
 
-        File::replaceInFile(
-            'base-modules',
-            plural_kebab($name),
-            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
-        );
+        File::replaceInFile('base-modules', plural_kebab($name), $controllerPath);
 
-        File::replaceInFile(
-            'baseModule',
-            singular_camel($name),
-            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
-        );
+        File::replaceInFile('baseModule', singular_camel($name), $controllerPath);
+
+        File::replaceInFile('BASE_MODULE', singular_capital($name), $controllerPath);
     }
 
     /**
