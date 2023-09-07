@@ -47,10 +47,11 @@ class BaseModuleController extends BaseController
     {
         parent::__construct();
 
-        $this->middleware('permission:' . $this->permissions('list'))->only(['index', 'datatable']);
-        $this->middleware('permission:' . $this->permissions('create'))->only(['create', 'store']);
-        $this->middleware('permission:' . $this->permissions('update'))->only(['edit', 'update']);
-        $this->middleware('permission:' . $this->permissions('show'))->only(['show']);
+        $this->middleware('permission:' . Permissions::VIEW_BASE_MODULES)->only(['index', 'datatable']);
+        $this->middleware('permission:' . Permissions::CREATE_BASE_MODULE)->only(['create', 'store']);
+        $this->middleware('permission:' . Permissions::UPDATE_BASE_MODULE)->only(['edit', 'update']);
+        $this->middleware('permission:' . Permissions::SHOW_BASE_MODULE)->only(['show']);
+        $this->middleware('permission:' . Permissions::CHANGE_BASE_MODULE_STATUS)->only(['changeStatus']);
 
         $this->middleware('auth:admin');
     }
@@ -184,23 +185,6 @@ class BaseModuleController extends BaseController
     }
 
     /**
-     * @param string $function
-     * @return string
-     * @throws Exception
-     */
-    private function permissions(string $function): string
-    {
-        return match ($function) {
-            'list' => Permissions::VIEW_BASE_MODULES,
-            'create' => Permissions::CREATE_BASE_MODULE,
-            'update' => Permissions::UPDATE_BASE_MODULE,
-            'show' => Permissions::SHOW_BASE_MODULE,
-            default => throw new Exception(ResponseMessage::UNKNOWN_PERMISSION->getMessage()),
-        };
-
-    }
-
-    /**
      * Build table data (header & body)
      * @return void
      */
@@ -211,7 +195,7 @@ class BaseModuleController extends BaseController
             ->addColumn(TableColumn::create()->setColumn('name')->setName('Name')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('status')->setName('Status')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('created_at')->setName('Creation date')->setIsSortable(true))
-            ->addColumn(TableColumn::create()->setColumn('actions')->setName('Actions')->setIsSortable(true))
+            ->addColumn(TableColumn::create()->setColumn('actions')->setName('Actions'))
             ->generate();
     }
 
