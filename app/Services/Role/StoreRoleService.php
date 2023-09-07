@@ -18,7 +18,7 @@ class StoreRoleService extends BaseService
     }
 
 
-    public function store(): Model
+    public function execute(): Model
     {
         $role = $this->collection->create($this->data());
 

@@ -47,11 +47,12 @@ class BaseModuleController extends BaseController
     {
         parent::__construct();
 
-        $this->middleware('permission:' . Permissions::VIEW_BASE_MODULES)->only(['index', 'datatable']);
+        $this->middleware('permission:' . Permissions::LIST_BASE_MODULES)->only(['index', 'datatable']);
         $this->middleware('permission:' . Permissions::CREATE_BASE_MODULE)->only(['create', 'store']);
         $this->middleware('permission:' . Permissions::UPDATE_BASE_MODULE)->only(['edit', 'update']);
         $this->middleware('permission:' . Permissions::SHOW_BASE_MODULE)->only(['show']);
         $this->middleware('permission:' . Permissions::CHANGE_BASE_MODULE_STATUS)->only(['changeStatus']);
+        $this->middleware('permission:' . Permissions::DELETE_BASE_MODULE)->only(['destroy']);
 
         $this->middleware('auth:admin');
     }

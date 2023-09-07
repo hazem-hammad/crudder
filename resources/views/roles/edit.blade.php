@@ -73,9 +73,8 @@
                             Discard
                         </button>
                         @can($permission::UPDATE_ROLE)
-                        <x-actions.submit-button/>
+                            <x-actions.submit-button/>
                         @endcan
-
                     </div>
                     <!--end::Actions-->
                     <div></div>

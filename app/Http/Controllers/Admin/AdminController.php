@@ -123,14 +123,6 @@ class AdminController extends Controller
     }
 
     /**
-     * @throws Exception
-     */
-    public function ticketDatatable(): JsonResponse
-    {
-        $filters = new TicketFilters(request());
-    }
-
-    /**
      * @param UpdateAdminRequest $request
      * @param Admin $admin
      * @return JsonResponse
@@ -146,7 +138,7 @@ class AdminController extends Controller
             }
 
             $data = $request->only(['name', 'email', 'password', 'primary_admin', 'role_id', 'profile_image']);
-            (new UpdateAdminService($admin))->setData($data)->update();
+            (new UpdateAdminService($admin))->setData($data)->execute();
 
             return (new WebSuccessResponse(
                 message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage(),

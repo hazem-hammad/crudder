@@ -2,6 +2,7 @@
 
 namespace App\Foundation\Http\Controllers;
 
+use App\Foundation\Enums\Permissions;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;

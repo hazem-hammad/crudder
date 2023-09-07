@@ -25,12 +25,13 @@
                                 <div class="card-toolbar">
                                     <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
 
-                                        <a class="btn btn-primary btn-sm"
-                                           @if($createFormType == 'popup')
-                                               data-bs-toggle="modal" data-bs-target="#create_modal"
-                                           @else
-                                               href="{{ route($routePath.'.create') }}"
-                                            @endif>
+                                        @can($permissions::CREATE_BASE_MODULE)
+                                            <a class="btn btn-primary btn-sm"
+                                               @if($createFormType == 'popup')
+                                                   data-bs-toggle="modal" data-bs-target="#create_modal"
+                                               @else
+                                                   href="{{ route($routePath.'.create') }}"
+                                                @endif>
                                            <span class="svg-icon svg-icon-2">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
@@ -42,8 +43,10 @@
                                                           fill="currentColor"></rect>
                                                 </svg>
                                            </span>
-                                            @lang("Add ". readableName($moduleName))
-                                        </a>
+                                                @lang("Add ". readableName($moduleName))
+                                            </a>
+                                        @endcan
+
                                     </div>
                                 </div>
                             </div>

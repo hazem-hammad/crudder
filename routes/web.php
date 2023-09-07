@@ -3,7 +3,6 @@
 use App\Http\Controllers\Admin\AdminController as AdminsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\Platform\PlatformController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Setting\SettingController;
 use Illuminate\Support\Facades\Route;

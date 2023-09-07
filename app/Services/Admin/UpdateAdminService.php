@@ -23,7 +23,7 @@ class UpdateAdminService extends BaseService
      * @return void
      * @throws Exception
      */
-    public function update(): void
+    public function execute(): void
     {
         $this->resource->update($this->data());
 

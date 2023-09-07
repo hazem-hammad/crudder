@@ -29,7 +29,7 @@ class UpdateAdminRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:3', 'max:255'],
 
-            'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($this->admin->id)],
+            'email' => ['required', 'email', Rule::unique('admins', 'email')->ignore($this->admin->id)],
 
             'primary_admin' => ['nullable', Rule::requiredIf(in_array($this->admin->primary_admin, [AdminTypes::PRIMARY_ADMIN->value]))],
 

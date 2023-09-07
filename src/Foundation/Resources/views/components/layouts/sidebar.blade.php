@@ -5,7 +5,7 @@
     <div class="aside-toolbar flex-column-auto" id="kt_aside_toolbar">
         <div class="aside-user d-flex align-items-sm-center justify-content-center py-5">
             <div class="symbol symbol-50px">
-{{--                <img src="{{ $user->getMedia('profile_image') }}" alt=""/>--}}
+                {{--                <img src="{{ $user->getMedia('profile_image') }}" alt=""/>--}}
             </div>
 
             <div class="aside-user-info flex-row-fluid flex-wrap ms-5">
@@ -121,9 +121,10 @@
                     </div>
                 </div>
 
-                <div class="menu-item">
-                    <a class="menu-link {{ activeTab('admin.base-modules.index') }} {{ activeTab('admin.base-modules.create') }} {{ activeTab('admin.base-modules.show') }} {{ activeTab('admin.base-modules.edit') }}"
-                       href="{{ route('admin.base-modules.index') }}">
+                @can($permissions::LIST_BASE_MODULES)
+                    <div class="menu-item">
+                        <a class="menu-link {{ activeTab('admin.base-modules.index') }} {{ activeTab('admin.base-modules.create') }} {{ activeTab('admin.base-modules.show') }} {{ activeTab('admin.base-modules.edit') }}"
+                           href="{{ route('admin.base-modules.index') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -140,9 +141,10 @@
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title"> Base Modules </span>
-                    </a>
-                </div>
+                            <span class="menu-title"> Base Modules </span>
+                        </a>
+                    </div>
+                @endcan
 
                 {{-- Append service providers here --}}
 

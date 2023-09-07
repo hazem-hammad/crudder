@@ -28,7 +28,7 @@
         <!--begin::Admins Management row-->
         <tr>
             <!--begin::Label-->
-            <td class="text-gray-800">Admins Management</td>
+            <td class="text-gray-800">Base Module Management</td>
             <!--end::Label-->
             <!--begin::Options-->
             <td>
@@ -38,8 +38,8 @@
                     <label
                         class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
                         <input class="form-check-input" type="checkbox"
-                               value="{{ $permissionsEnum::VIEW_ADMINS }}"
-                               {{optional($row)->hasPermissionTo($permissionsEnum::VIEW_ADMINS) ? 'checked' : '' }}
+                               value="{{ $permissionsEnum::LIST_BASE_MODULES }}"
+                               {{optional($row)->hasPermissionTo($permissionsEnum::LIST_BASE_MODULES) ? 'checked' : '' }}
                                name="permissions[]">
                         <span class="form-check-label"> List </span>
                     </label>
@@ -48,8 +48,8 @@
                     <label
                         class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
                         <input class="form-check-input" type="checkbox"
-                               value="{{ $permissionsEnum::CREATE_ADMIN }}"
-                               {{optional($row)->hasPermissionTo($permissionsEnum::CREATE_ADMIN) ? 'checked' : '' }}
+                               value="{{ $permissionsEnum::CREATE_BASE_MODULE }}"
+                               {{optional($row)->hasPermissionTo($permissionsEnum::CREATE_BASE_MODULE) ? 'checked' : '' }}
                                name="permissions[]">
                         <span class="form-check-label"> Create </span>
                     </label>
@@ -58,8 +58,8 @@
                     <label
                         class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
                         <input class="form-check-input" type="checkbox"
-                               value="{{ $permissionsEnum::UPDATE_ADMIN }}"
-                               {{optional($row)->hasPermissionTo($permissionsEnum::UPDATE_ADMIN) ? 'checked' : '' }}
+                               value="{{ $permissionsEnum::UPDATE_BASE_MODULE }}"
+                               {{optional($row)->hasPermissionTo($permissionsEnum::UPDATE_BASE_MODULE) ? 'checked' : '' }}
                                name="permissions[]">
                         <span class="form-check-label"> Update </span>
                     </label>
@@ -68,10 +68,21 @@
                     <label
                         class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
                         <input class="form-check-input" type="checkbox"
-                               value="{{ $permissionsEnum::CHANGE_ADMIN_STATUS }}"
-                               {{optional($row)->hasPermissionTo($permissionsEnum::CHANGE_ADMIN_STATUS) ? 'checked' : '' }}
+                               value="{{ $permissionsEnum::CHANGE_BASE_MODULE_STATUS }}"
+                               {{optional($row)->hasPermissionTo($permissionsEnum::CHANGE_BASE_MODULE_STATUS) ? 'checked' : '' }}
                                name="permissions[]">
                         <span class="form-check-label"> Change status </span>
+                    </label>
+                    <!--end::Checkbox-->
+
+                    <!--begin::Checkbox-->
+                    <label
+                        class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
+                        <input class="form-check-input" type="checkbox"
+                               value="{{ $permissionsEnum::DELETE_BASE_MODULE }}"
+                               {{optional($row)->hasPermissionTo($permissionsEnum::DELETE_BASE_MODULE) ? 'checked' : '' }}
+                               name="permissions[]">
+                        <span class="form-check-label"> Delete </span>
                     </label>
                     <!--end::Checkbox-->
 

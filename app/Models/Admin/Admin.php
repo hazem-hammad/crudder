@@ -3,7 +3,6 @@
 namespace App\Models\Admin;
 
 use App\Enums\AdminTypes;
-use App\Filters\Admin\AdminFilters;
 use App\Foundation\Enums\ActivationType;
 use App\Foundation\Models\BaseModel;
 use App\Modules\BaseModule\Filters\BaseModuleFilters;
@@ -32,6 +31,8 @@ class Admin extends BaseModel implements
 {
     use HasFactory, Notifiable, HasRoles;
     use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
+
+    protected $table = 'admins';
 
     /**
      * @var string

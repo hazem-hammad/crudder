@@ -22,23 +22,27 @@ class PermissionsSeeder extends Seeder
         $permissions = [
             [
                 "id" => 1,
-                "name" => "view email templates"
+                "name" => "view base modules"
             ],
             [
                 "id" => 2,
-                "name" => "view messenger"
+                "name" => "update base module"
             ],
             [
                 "id" => 3,
-                "name" => "view tickets"
+                "name" => "create base module"
             ],
             [
                 "id" => 4,
-                "name" => "create ticket"
+                "name" => "show base module"
             ],
             [
                 "id" => 5,
-                "name" => "reply ticket"
+                "name" => "change base module status"
+            ],
+            [
+                "id" => 6,
+                "name" => "delete base module"
             ]
         ];
 

@@ -33,9 +33,9 @@ class RoleController extends Controller
 
         $this->middleware('auth:admin');
 
-        $this->middleware('permission:' . $this->config['permissions']['index'])->only(['index', 'datatable']);
-        $this->middleware('permission:' . $this->config['permissions']['create'])->only(['create', 'store']);
-        $this->middleware('permission:' . $this->config['permissions']['update'])->only(['edit', 'update']);
+//        $this->middleware('permission:' . $this->config['permissions']['index'])->only(['index', 'datatable']);
+//        $this->middleware('permission:' . $this->config['permissions']['create'])->only(['create', 'store']);
+//        $this->middleware('permission:' . $this->config['permissions']['update'])->only(['edit', 'update']);
 
 
     }
@@ -66,7 +66,7 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request): JsonResponse
     {
-        (new StoreRoleService())->store();
+        (new StoreRoleService())->execute();
 
         return (new WebSuccessResponse(
             message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
