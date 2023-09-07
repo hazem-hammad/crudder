@@ -44,7 +44,12 @@ class DashboardModuleBuilder extends Command
         $name = text(
             label: 'Enter your module name.',
             placeholder: 'Should be in pascal case (User, TestModule)',
-            required: "The module name is required."
+            required: "The module name is required.",
+            validate: fn (string $value) => match (true) {
+                !preg_match('~^\p{Lu}~u', $value) => 'Module name should start with Capital letter.',
+                str_contains($value, ' ') => 'Module name shouldn\'t contains spaces.',
+                default => null
+            }
         );
 
         $this->createModuleFolders($name);
