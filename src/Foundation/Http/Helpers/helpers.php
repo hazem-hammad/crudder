@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
  */
 function singular_lower(string $string): string
 {
-    return Str::singular(Str::lower($string));
+    return Str::of($string)->lower()->singular();
 }
 
 /**
@@ -21,7 +21,7 @@ function singular_lower(string $string): string
  */
 function plural_lower(string $string): string
 {
-    return Str::plural(Str::lower($string));
+    return Str::of($string)->lower()->plural();
 }
 
 /**
@@ -30,9 +30,9 @@ function plural_lower(string $string): string
  * @param string $string
  * @return string
  */
-function singular_pascal(string $string): string
+function singular_studly(string $string): string
 {
-    return Str::singular(Str::studly($string));
+    return Str::of($string)->studly()->singular();
 }
 
 /**
@@ -43,7 +43,7 @@ function singular_pascal(string $string): string
  */
 function plural_pascal(string $string): string
 {
-    return Str::plural(Str::studly($string));
+    return Str::of($string)->studly()->plural();
 }
 
 /**

@@ -44,6 +44,7 @@ class DashboardModuleBuilder extends Command
         $name = text(
             label: 'Enter your module name.',
             placeholder: 'Should be in pascal case (User, TestModule)',
+            required: "The module name is required."
         );
 
         $this->createModuleFolders($name);
@@ -115,14 +116,14 @@ class DashboardModuleBuilder extends Command
     private function adjustFilters(string $name): void
     {
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Filters/BaseModuleFilters.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Filters/' . singular_pascal($name) . 'Filters.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Filters/BaseModuleFilters.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Filters/' . singular_studly($name) . 'Filters.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Filters/' . singular_pascal($name) . 'Filters.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Filters/' . singular_studly($name) . 'Filters.php'
         );
     }
 
@@ -133,26 +134,26 @@ class DashboardModuleBuilder extends Command
     private function adjustControllers(string $name): void
     {
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/BaseModuleController.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/BaseModuleController.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
         );
 
         File::replaceInFile(
             'base-modules',
             plural_kebab($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
         );
 
         File::replaceInFile(
             'baseModule',
             singular_camel($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Controllers/' . singular_pascal($name) . 'Controller.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Controllers/' . singular_studly($name) . 'Controller.php'
         );
     }
 
@@ -163,25 +164,25 @@ class DashboardModuleBuilder extends Command
     private function adjustRequests(string $name): void
     {
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/CreateBaseModuleRequest.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/Create' . singular_pascal($name) . 'Request.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Requests/CreateBaseModuleRequest.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Requests/Create' . singular_studly($name) . 'Request.php'
         );
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/UpdateBaseModuleRequest.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/Update' . singular_pascal($name) . 'Request.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Requests/UpdateBaseModuleRequest.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Requests/Update' . singular_studly($name) . 'Request.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/Create' . singular_pascal($name) . 'Request.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Requests/Create' . singular_studly($name) . 'Request.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Http/Requests/Update' . singular_pascal($name) . 'Request.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Http/Requests/Update' . singular_studly($name) . 'Request.php'
         );
     }
 
@@ -192,20 +193,20 @@ class DashboardModuleBuilder extends Command
     private function adjustModels(string $name): void
     {
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Models/BaseModule.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Models/' . singular_pascal($name) . '.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Models/BaseModule.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Models/' . singular_studly($name) . '.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Models/' . singular_pascal($name) . '.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Models/' . singular_studly($name) . '.php'
         );
 
         File::replaceInFile(
             'base_modules',
             plural_snake($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Models/' . singular_pascal($name) . '.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Models/' . singular_studly($name) . '.php'
         );
     }
 
@@ -216,20 +217,20 @@ class DashboardModuleBuilder extends Command
     private function adjustProviders(string $name): void
     {
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Providers/BaseModuleServiceProvider.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Providers/' . singular_pascal($name) . 'ServiceProvider.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Providers/BaseModuleServiceProvider.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Providers/' . singular_studly($name) . 'ServiceProvider.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Providers/' . singular_pascal($name) . 'ServiceProvider.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Providers/' . singular_studly($name) . 'ServiceProvider.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Providers/RouteServiceProvider.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Providers/RouteServiceProvider.php'
         );
     }
 
@@ -241,20 +242,20 @@ class DashboardModuleBuilder extends Command
     {
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Routes/web.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Routes/web.php'
         );
 
         File::replaceInFile(
             'base-modules',
             plural_kebab($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Routes/web.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Routes/web.php'
         );
 
         File::replaceInFile(
             'baseModule',
             singular_camel($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Routes/web.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Routes/web.php'
         );
     }
 
@@ -265,69 +266,69 @@ class DashboardModuleBuilder extends Command
     private function adjustServices(string $name): void
     {
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/BaseModulesDatatableService.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/' . singular_pascal($name) . 'sDatatableService.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/BaseModulesDatatableService.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/' . singular_studly($name) . 'sDatatableService.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/' . singular_pascal($name) . 'sDatatableService.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/' . singular_studly($name) . 'sDatatableService.php'
         );
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/ChangeBaseModuleStatusService.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Change' . singular_pascal($name) . 'StatusService.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/ChangeBaseModuleStatusService.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Change' . singular_studly($name) . 'StatusService.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Change' . singular_pascal($name) . 'StatusService.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Change' . singular_studly($name) . 'StatusService.php'
         );
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/DeleteBaseModuleService.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Delete' . singular_pascal($name) . 'Service.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/DeleteBaseModuleService.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Delete' . singular_studly($name) . 'Service.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Delete' . singular_pascal($name) . 'Service.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Delete' . singular_studly($name) . 'Service.php'
         );
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/GetBaseModulesService.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Get' . singular_pascal($name) . 'sService.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/GetBaseModulesService.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Get' . singular_studly($name) . 'sService.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Get' . singular_pascal($name) . 'sService.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Get' . singular_studly($name) . 'sService.php'
         );
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/StoreBaseModuleService.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Store' . singular_pascal($name) . 'Service.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/StoreBaseModuleService.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Store' . singular_studly($name) . 'Service.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Store' . singular_pascal($name) . 'Service.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Store' . singular_studly($name) . 'Service.php'
         );
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/UpdateBaseModuleService.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Update' . singular_pascal($name) . 'Service.php'
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/UpdateBaseModuleService.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Update' . singular_studly($name) . 'Service.php'
         );
 
         File::replaceInFile(
             'BaseModule',
-            singular_pascal($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Services/Update' . singular_pascal($name) . 'Service.php'
+            singular_studly($name),
+            $this->modulesPath . '/' . singular_studly($name) . '/Services/Update' . singular_studly($name) . 'Service.php'
         );
     }
 
@@ -340,14 +341,14 @@ class DashboardModuleBuilder extends Command
         $fileName = date('Y_m_d') . '_' . Carbon::now()->timestamp . '_create_' . plural_snake($name) . '_table.php';
 
         $this->rename(
-            $this->modulesPath . '/' . singular_pascal($name) . '/Database/migrations/2023_08_30_213205_create_base_modules_table.php',
-            $this->modulesPath . '/' . singular_pascal($name) . '/Database/migrations/' . $fileName
+            $this->modulesPath . '/' . singular_studly($name) . '/Database/migrations/2023_08_30_213205_create_base_modules_table.php',
+            $this->modulesPath . '/' . singular_studly($name) . '/Database/migrations/' . $fileName
         );
 
         File::replaceInFile(
             'base_modules',
             plural_snake($name),
-            $this->modulesPath . '/' . singular_pascal($name) . '/Database/migrations/' . $fileName
+            $this->modulesPath . '/' . singular_studly($name) . '/Database/migrations/' . $fileName
         );
     }
 
@@ -357,7 +358,7 @@ class DashboardModuleBuilder extends Command
      */
     private function registerServiceProvider(string $name): void
     {
-        $content = "App\Modules\\" . singular_pascal($name) . "\\Providers\\" . singular_pascal($name) . "ServiceProvider";
+        $content = "App\Modules\\" . singular_studly($name) . "\\Providers\\" . singular_studly($name) . "ServiceProvider";
 
         File::replaceInFile(
             '// Append service providers here //',
