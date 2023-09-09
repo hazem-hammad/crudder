@@ -39,7 +39,7 @@ class DashboardModuleBuilder extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle()
     {
         $name = text(
             label: 'Enter your module name.',
@@ -110,6 +110,9 @@ class DashboardModuleBuilder extends Command
 
         // append new module route in sidebar
         $this->registerInSidebar($name);
+
+        // append new module permissions in permissions enum
+        $this->addPermissionsToEnum($name);
 
         return true;
     }
@@ -372,7 +375,7 @@ class DashboardModuleBuilder extends Command
     {
         $content = '
                 <div class="menu-item">
-                    <a class="menu-link {{ activeTab(\'admin.'.plural_lower($name).'.index\') }} {{ activeTab(\'admin.'.plural_lower($name).'.create\') }} {{ activeTab(\'admin.'.plural_lower($name).'.show\') }} {{ activeTab(\'admin.'.$name.'.edit\') }}"
+                    <a class="menu-link {{ activeTab(\'admin.'.plural_lower($name).'.index\') }} {{ activeTab(\'admin.'.plural_lower($name).'.create\') }} {{ activeTab(\'admin.'.plural_lower($name).'.show\') }} {{ activeTab(\'admin.'.plural_lower($name).'.edit\') }}"
                        href="{{ route(\'admin.'.plural_lower($name).'.index\') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
@@ -399,6 +402,28 @@ class DashboardModuleBuilder extends Command
             '{{-- Append service providers here --}}',
             $content,
             $this->coresPath . '/Resources/views/components/layouts/sidebar.blade.php'
+        );
+    }
+
+    /**
+     * @param string $name
+     * @return void
+     */
+    private function addPermissionsToEnum(string $name): void
+    {
+        $content = '
+    const LIST_'. strtoupper(plural_lower($name)) .' = \'list '. plural_lower($name) .'\';
+    const UPDATE_'. strtoupper(singular_lower($name)) .' = \'update '. singular_lower($name) .'\';
+    const CREATE_'. strtoupper(singular_lower($name)) .' = \'create '. singular_lower($name) .'\';
+    const SHOW_'. strtoupper(singular_lower($name)) .' = \'show '. singular_lower($name) .'\';
+    const DELETE_'. strtoupper(singular_lower($name)) .' = \'delete '. singular_lower($name) .'\';
+    const CHANGE_'. strtoupper(singular_lower($name)) .'_STATUS = \'change '. singular_lower($name) .' status\';
+        ' . "\r\n" . '    // append permissions here';
+
+        File::replaceInFile(
+            '// append permissions here',
+            $content,
+            $this->coresPath . '/Enums/Permissions.php'
         );
     }
 

@@ -22,7 +22,7 @@ class PermissionsSeeder extends Seeder
         $permissions = [
             [
                 "id" => 1,
-                "name" => "view base modules"
+                "name" => "list base modules"
             ],
             [
                 "id" => 2,
@@ -43,7 +43,8 @@ class PermissionsSeeder extends Seeder
             [
                 "id" => 6,
                 "name" => "delete base module"
-            ]
+            ],
+            // append permissions here
         ];
 
         // create permissions
