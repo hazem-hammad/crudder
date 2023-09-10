@@ -41,6 +41,17 @@ function singular_studly(string $string): string
  * @param string $string
  * @return string
  */
+function plural_studly(string $string): string
+{
+    return Str::of($string)->studly()->plural();
+}
+
+/**
+ * Get plural and pascal from given string
+ *
+ * @param string $string
+ * @return string
+ */
 function plural_pascal(string $string): string
 {
     return Str::of($string)->studly()->plural();

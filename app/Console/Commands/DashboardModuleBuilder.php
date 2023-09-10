@@ -393,7 +393,7 @@ class DashboardModuleBuilder extends Command
                                 </svg>
                             </span>
                         </span>
-                        <span class="menu-title"> '.Str::plural($name).' </span>
+                        <span class="menu-title"> '.readableName($name).' </span>
                     </a>
                 </div>
         ' . "\r\n" . '                {{-- Append service providers here --}}';
