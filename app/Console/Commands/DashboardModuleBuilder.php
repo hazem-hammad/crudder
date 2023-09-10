@@ -375,8 +375,8 @@ class DashboardModuleBuilder extends Command
     {
         $content = '
                 <div class="menu-item">
-                    <a class="menu-link {{ activeTab(\'admin.'.plural_lower($name).'.index\') }} {{ activeTab(\'admin.'.plural_lower($name).'.create\') }} {{ activeTab(\'admin.'.plural_lower($name).'.show\') }} {{ activeTab(\'admin.'.plural_lower($name).'.edit\') }}"
-                       href="{{ route(\'admin.'.plural_lower($name).'.index\') }}">
+                    <a class="menu-link {{ activeTab(\'admin.'.plural_kebab($name).'.index\') }} {{ activeTab(\'admin.'.plural_kebab($name).'.create\') }} {{ activeTab(\'admin.'.plural_kebab($name).'.show\') }} {{ activeTab(\'admin.'.plural_kebab($name).'.edit\') }}"
+                       href="{{ route(\'admin.'.plural_kebab($name).'.index\') }}">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
