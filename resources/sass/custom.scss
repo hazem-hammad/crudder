@@ -1,0 +1,116 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+
+.btn-group-sm > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon),
+.btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm {
+    padding: calc(0.55rem + 1px) calc(1.25rem + 20px);
+    border-radius: $border-radius;
+}
+
+.form-control {
+    border-radius: $border-radius;
+}
+
+table.dataTable > thead > tr > td:not(.sorting_disabled), table.dataTable > thead > tr > th:not(.sorting_disabled),
+table.dataTable thead tr > .dtfc-fixed-left, table.dataTable thead tr > .dtfc-fixed-right {
+    background: #eee;
+    color: black;
+}
+
+
+.aside {
+    background-color: $secondary-color;
+}
+
+.header .header-brand {
+    background-color: #fff;
+}
+
+.aside-menu .menu .menu-item .menu-link.active {
+    background-color: #fff;
+}
+
+.aside-menu .menu .menu-item .menu-link.active .menu-title {
+    color: $primary-color;
+}
+
+.aside-menu .menu > .menu-item {
+    padding: 0 0;
+}
+
+.aside-menu .menu .menu-item .menu-link.active,
+.aside-menu .menu .menu-item .menu-link {
+    margin-left: -12px;
+    padding-left: 20px;
+}
+
+.menu-column {
+    width: 90%;
+}
+
+.aside-menu .menu-item .menu-link {
+    border-radius: 0 $border-radius $border-radius 0;
+}
+
+div.dataTables_wrapper div.dataTables_processing {
+    top: 27px;
+    background: $primary-color;
+    color: #fff;
+    font-weight: bold;
+    width: 190px;
+}
+
+.btn.btn-primary {
+    border-color: $primary-color;
+    background-color: $primary-color;
+}
+
+.btn.btn-dark {
+    border-color: $secondary-color;
+    background-color: $secondary-color;
+}
+
+.text-primary {
+    color: $primary-color !important;
+}
+
+.btn.btn-light-primary {
+    color: $primary-color !important;
+    border-color: $primary-color-light;
+    background-color: $primary-color-light;
+}
+
+.form-check-custom.form-check-solid .form-check-input:checked {
+    background-color: $primary-color;
+}
+
+.btn.btn-light-primary .svg-icon, .btn.btn-light-primary i {
+    color: $primary-color;
+}
+
+.btn-check:active+.btn.btn-light-primary, .btn-check:checked+.btn.btn-light-primary, .btn.btn-light-primary.active, .btn.btn-light-primary.show, .btn.btn-light-primary:active:not(.btn-active), .btn.btn-light-primary:focus:not(.btn-active), .btn.btn-light-primary:hover:not(.btn-active), .show>.btn.btn-light-primary {
+    border-color: $primary-color;
+    background-color: $primary-color !important;
+}
+
+.btn-check:active+.btn.btn-primary, .btn-check:checked+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.show, .btn.btn-primary:active:not(.btn-active), .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .show>.btn.btn-primary {
+    border-color: $primary-color;
+    background-color: $primary-color !important;
+}
+
+@media (min-width: 992px) {
+    .content {
+        padding: 15px 0;
+    }
+}
+
+.active>.page-link, .page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: $secondary-color;
+    border-color: var(--bs-pagination-active-border-color);
+}

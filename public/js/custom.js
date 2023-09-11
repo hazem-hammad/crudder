@@ -151,7 +151,7 @@ $(document).ready(function () {
  * update model status
  * @param element
  */
-function updateModelStatus(element) {
+function updateModelStatus1(element) {
 
     const url = element.dataset.route;
 
@@ -178,6 +178,48 @@ function updateModelStatus(element) {
 
             $('#kt_datatable').DataTable().ajax.reload();
         })
+}
+
+function updateModelStatus(element) {
+    Swal.fire({
+        title: 'Are you sure you want to change status?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#A40134',
+        cancelButtonColor: '#3699FF',
+        confirmButtonText: 'Yes, Change It!',
+        cancelButtonText: 'No',
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            const action = element.getAttribute('data-action');
+
+            axios.patch(action)
+                .then(response => {
+
+                    Swal.fire('', response.data?.message, 'success')
+
+                    if (response.data.has_redirect) {
+                        if (response.data.url) {
+                            setTimeout(function () {
+                                window.location.replace(response.data.url);
+                            }, 1000)
+                        } else {
+                            location.reload();
+                        }
+
+                    } else {
+                        $('#kt_datatable').DataTable().ajax.reload();
+
+                    }
+
+                })
+                .catch(error => {
+                    Swal.fire('', error?.response?.data?.message, 'error')
+                })
+
+        }
+    })
 }
 
 $('.category-type').change(function () {

@@ -1,22 +1,12 @@
-<div class="d-flex align-items-center position-relative my-1">
-    <input type="text" name="name" id="name"
-           class="form-control form-control-sm datatable-input ps-14" placeholder="@lang('Search Admins')">
-    &nbsp;&nbsp;
-    <select class="form-select form-control-solid form-select-sm datatable-input" data-control="select2"
-            data-placeholder="@lang('Select an option')" id="status" name="status">
-        <option></option>
-        <option value="{{\App\Foundation\Enums\ActivationType::ACTIVE->getActivationStatus()}}"> @lang('Active') </option>
-        <option value="{{\App\Foundation\Enums\ActivationType::IN_ACTIVE->getActivationStatus()}}"> @lang('Inactive') </option>
-    </select>
-    &nbsp;&nbsp;
+<div class="d-flex justify-content-end mb-5">
+    <div class="d-flex align-items-center position-relative my-1 gap-3">
+        <input type="text" name="name" id="name"
+               class="form-control form-control-sm datatable-input" placeholder="@lang('Search Admins')">
 
-    <button class="btn btn-primary me-2 ml-5 btn-sm" id="kt_search">
+        <button class="btn btn-secondary me-2 ml-5 btn-sm" id="kt_search">
         <span>
             <span> @lang('Search') </span>
         </span>
-    </button>
-
-    <button class="btn btn-light-primary btn-sm" id="kt_reset">
-        <i class="fas fa-close"></i>
-    </button>
+        </button>
+    </div>
 </div>

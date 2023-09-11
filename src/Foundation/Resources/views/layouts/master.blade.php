@@ -27,7 +27,8 @@
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{ asset('plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
     <link href="{{ asset('css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('css/custom.style.css') }}" rel="stylesheet" type="text/css"/>
+{{--    <link href="{{ asset('css/custom.style.css') }}" rel="stylesheet" type="text/css"/>--}}
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css"/>
 {{--    <link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
     <!--end::Global Stylesheets Bundle-->
 </head>
