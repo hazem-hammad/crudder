@@ -3,7 +3,7 @@
         <input type="text" name="name" id="name"
                class="form-control form-control-sm datatable-input" placeholder="@lang('Search Admins')">
 
-        <button class="btn btn-secondary me-2 ml-5 btn-sm" id="kt_search">
+        <button class="btn btn-dark me-2 ml-5 btn-sm" id="kt_search">
         <span>
             <span> @lang('Search') </span>
         </span>

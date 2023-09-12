@@ -3,8 +3,8 @@
     <div class="header-brand">
         <!--begin::Logo-->
         <a href="{{ route('admin.index') }}">
-            <p style="font-size: 23px; color: #000; font-weight: bold">
-                Crudder
+            <p style="font-size: 23px; color: #fff; font-weight: bold">
+                LG
             </p>
         </a>
         <!--end::Logo-->

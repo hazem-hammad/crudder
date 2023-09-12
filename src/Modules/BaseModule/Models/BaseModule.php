@@ -4,9 +4,11 @@ namespace App\Modules\BaseModule\Models;
 
 use App\Foundation\Enums\ActivationType;
 use App\Foundation\Models\BaseModel;
+use App\Modules\BaseModule\Database\factories\BaseModuleFactory;
 use App\Modules\BaseModule\Filters\BaseModuleFilters;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * Class BaseModule
@@ -18,6 +20,14 @@ class BaseModule extends BaseModel
     use HasFactory;
 
     protected $table = 'base_modules';
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): Factory
+    {
+        return BaseModuleFactory::new();
+    }
 
     /**
      * @var string[]

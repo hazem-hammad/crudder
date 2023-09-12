@@ -7,7 +7,7 @@
 
 .btn-group-sm > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon),
 .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm {
-    padding: calc(0.55rem + 1px) calc(1.25rem + 20px);
+    padding: calc(0.55rem + 1px) calc(1.25rem + 10px);
     border-radius: $border-radius;
 }
 
@@ -21,40 +21,35 @@ table.dataTable thead tr > .dtfc-fixed-left, table.dataTable thead tr > .dtfc-fi
     color: black;
 }
 
-
 .aside {
     background-color: $secondary-color;
 }
 
 .header .header-brand {
-    background-color: #fff;
+    background-color: $secondary-color;
 }
 
 .aside-menu .menu .menu-item .menu-link.active {
-    background-color: #fff;
+    background-color: #ffffff2e;
 }
 
-.aside-menu .menu .menu-item .menu-link.active .menu-title {
-    color: $primary-color;
-}
+//.aside-menu .menu > .menu-item {
+//    padding: 0 0;
+//}
 
-.aside-menu .menu > .menu-item {
-    padding: 0 0;
-}
+//.aside-menu .menu .menu-item .menu-link.active,
+//.aside-menu .menu .menu-item .menu-link {
+//    margin-left: -12px;
+//    padding-left: 20px;
+//}
 
-.aside-menu .menu .menu-item .menu-link.active,
-.aside-menu .menu .menu-item .menu-link {
-    margin-left: -12px;
-    padding-left: 20px;
-}
+//.menu-column {
+//    width: 90%;
+//}
 
-.menu-column {
-    width: 90%;
-}
-
-.aside-menu .menu-item .menu-link {
-    border-radius: 0 $border-radius $border-radius 0;
-}
+//.aside-menu .menu-item .menu-link {
+//    border-radius: 0 $border-radius $border-radius 0;
+//}
 
 div.dataTables_wrapper div.dataTables_processing {
     top: 27px;
@@ -100,6 +95,11 @@ div.dataTables_wrapper div.dataTables_processing {
 .btn-check:active+.btn.btn-primary, .btn-check:checked+.btn.btn-primary, .btn.btn-primary.active, .btn.btn-primary.show, .btn.btn-primary:active:not(.btn-active), .btn.btn-primary:focus:not(.btn-active), .btn.btn-primary:hover:not(.btn-active), .show>.btn.btn-primary {
     border-color: $primary-color;
     background-color: $primary-color !important;
+}
+
+.aside .aside-toolbar .aside-user {
+    border-top: 1px solid #3c3c3c;
+    padding: 0 25px;
 }
 
 @media (min-width: 992px) {
