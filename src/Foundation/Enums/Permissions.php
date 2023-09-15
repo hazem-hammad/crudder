@@ -25,5 +25,13 @@ enum Permissions
     const DELETE_BASE_MODULE = 'delete base module';
     const CHANGE_BASE_MODULE_STATUS = 'change base module status';
 
+    
+    const LIST_ARTICLES = 'list articles';
+    const UPDATE_ARTICLE = 'update article';
+    const CREATE_ARTICLE = 'create article';
+    const SHOW_ARTICLE = 'show article';
+    const DELETE_ARTICLE = 'delete article';
+    const CHANGE_ARTICLE_STATUS = 'change article status';
+        
     // append permissions here
 }

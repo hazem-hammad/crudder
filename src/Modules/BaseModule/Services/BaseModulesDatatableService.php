@@ -29,17 +29,17 @@ class BaseModulesDatatableService extends BaseService
                     'row' => $row,
                 ]);
             })
-            ->editColumn('status', function ($row) {
-                return view($this->viewPath.'::datatable.status', [
-                    'row' => $row,
-                ]);
-            })
             ->editColumn('actions', function ($row) {
                 return view($this->viewPath.'::datatable.actions', [
                     'row' => $row,
                 ]);
             })
             ->editColumn('created_at', function ($row) {
+                return view($this->viewPath.'::datatable.created_at', [
+                    'row' => $row,
+                ]);
+            })
+            ->editColumn('updated_at', function ($row) {
                 return view($this->viewPath.'::datatable.created_at', [
                     'row' => $row,
                 ]);

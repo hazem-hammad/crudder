@@ -4,6 +4,7 @@ namespace App\Http;
 
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\LogoutSuspendedAdmin;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrimStrings;
@@ -66,6 +67,7 @@ class Kernel extends HttpKernel
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
+            LogoutSuspendedAdmin::class
         ],
 
         'api' => [
@@ -97,12 +99,5 @@ class Kernel extends HttpKernel
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
-
-        'localize' => LaravelLocalizationRoutes::class,
-        'localizationRedirect' => LaravelLocalizationRedirectFilter::class,
-        'localeSessionRedirect' => LocaleSessionRedirect::class,
-        'localeCookieRedirect' => LocaleCookieRedirect::class,
-        'localeViewPath' => LaravelLocalizationViewPath::class,
-
     ];
 }

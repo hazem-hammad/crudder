@@ -2,11 +2,8 @@
     <!--begin::Brand-->
     <div class="header-brand">
         <!--begin::Logo-->
-        <a href="{{ route('admin.index') }}">
-            <p style="font-size: 23px; color: #fff; font-weight: bold">
-                LG
-            </p>
-        </a>
+        <img alt="Logo" src="{{ asset('media/logos/full-logo.png') }}" class="sidebar-logo w-80px w-lg-100px"/>
+
         <!--end::Logo-->
         <!--begin::Aside minimize-->
         <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-minimize"
@@ -72,10 +69,71 @@
             class="container-fluid py-6 py-lg-0 d-flex flex-column flex-lg-row align-items-lg-stretch justify-content-lg-between">
             <!--begin::Page title-->
             <div class="page-title d-flex justify-content-center flex-column me-5">
+                <!--begin::Title-->
+                <h1 class="d-flex flex-column text-dark fw-bold fs-3 mb-0">
+                    @yield('page-title')
+                </h1>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 pt-1">
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-muted">
+                        <a href="{{ route('admin.index') }}" class="text-muted text-hover-primary">Home</a>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item">
+                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
+                    </li>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <li class="breadcrumb-item text-dark">
+                        @yield('page-sub-title')
+                    </li>
+                    <!--end::Item-->
+                </ul>
+                <!--end::Breadcrumb-->
             </div>
             <!--end::Page title-->
             <!--begin::Action group-->
             <div class="d-flex align-items-stretch overflow-auto pt-3 pt-lg-0">
+
+                <!--begin::Action wrapper-->
+                <div class="d-flex align-items-center">
+                    <!--begin::Label-->
+                    <span class="fs-7 text-gray-700 fw-bold pe-3 d-none d-xxl-block">Quick Tools:</span>
+                    <!--end::Label-->
+                    <!--begin::Actions-->
+                    <div class="d-flex">
+
+                        <!--begin::Notifications-->
+                        <div class="d-flex align-items-center">
+                            <!--begin::Menu- wrapper-->
+                            <a href=""
+                               class="btn btn-sm btn-icon btn-icon-muted btn-active-icon-primary">
+                                <!--begin::Svg Icon | path: icons/duotune/files/fil005.svg-->
+                                <span class="svg-icon svg-icon-1">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3"
+                                              d="M19 22H5C4.4 22 4 21.6 4 21V3C4 2.4 4.4 2 5 2H14L20 8V21C20 21.6 19.6 22 19 22ZM16 13.5L12.5 13V10C12.5 9.4 12.6 9.5 12 9.5C11.4 9.5 11.5 9.4 11.5 10L11 13L8 13.5C7.4 13.5 7 13.4 7 14C7 14.6 7.4 14.5 8 14.5H11V18C11 18.6 11.4 19 12 19C12.6 19 12.5 18.6 12.5 18V14.5L16 14C16.6 14 17 14.6 17 14C17 13.4 16.6 13.5 16 13.5Z"
+                                              fill="currentColor"/>
+                                        <rect x="11" y="19" width="10" height="2" rx="1" transform="rotate(-90 11 19)"
+                                              fill="currentColor"/>
+                                        <rect x="7" y="13" width="10" height="2" rx="1" fill="currentColor"/>
+                                        <path d="M15 8H20L14 2V7C14 7.6 14.4 8 15 8Z" fill="currentColor"/>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </a>
+                            <!--end::Menu wrapper-->
+                        </div>
+                        <!--end::Notifications-->
+
+                    </div>
+                    <!--end::Actions-->
+                </div>
+                <!--end::Action wrapper-->
                 <!--begin::Theme mode-->
                 <div class="d-flex align-items-center">
                     <!--begin::Menu toggle-->
@@ -242,3 +300,4 @@
     </div>
     <!--end::Toolbar-->
 </div>
+

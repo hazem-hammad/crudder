@@ -58,13 +58,12 @@ $(document).ready(function () {
                         window.location.replace(response.url);
                     }, 1000)
 
-                } else {
-
-                    setTimeout(function () {
-                        location.reload();
-                    }, 1000)
-
                 }
+                // else {
+                //     setTimeout(function () {
+                //         location.reload();
+                //     }, 1000)
+                // }
             },
 
             error: function (response) {
@@ -80,11 +79,12 @@ $(document).ready(function () {
                     $.each(errors, function (key, value) {
                         form.find('#' + key + 'Message').html(value).css('display', 'block');
                     });
-                } else if (response.status === 401 || response.status === 419) {
-
-                    window.location.replace('/admin/login');
-
                 }
+                // else if (response.status === 401 || response.status === 419) {
+                //
+                //     window.location.replace('/admin/login');
+                //
+                // }
 
                 $("html, body").animate({scrollTop: 0});
 
@@ -151,35 +151,6 @@ $(document).ready(function () {
  * update model status
  * @param element
  */
-function updateModelStatus1(element) {
-
-    const url = element.dataset.route;
-
-    axios.patch(url)
-        .then(response => {
-
-            toastr.success(response.data.message);
-
-            if (response.has_redirect) {
-                if (response.url) {
-                    setTimeout(function () {
-                        window.location.replace(response.url);
-                    }, 1000)
-                } else {
-                    location.reload();
-                }
-            } else {
-                $('#kt_datatable').DataTable().ajax.reload();
-            }
-
-        })
-        .catch(error => {
-            toastr.error(error.message);
-
-            $('#kt_datatable').DataTable().ajax.reload();
-        })
-}
-
 function updateModelStatus(element) {
     Swal.fire({
         title: 'Are you sure you want to change status?',

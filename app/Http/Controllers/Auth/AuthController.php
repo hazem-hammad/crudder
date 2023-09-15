@@ -6,6 +6,7 @@ use App\Foundation\Enums\ResponseMessage;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Http\Controllers\Controller;
 use Exception;
+use http\Message;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -52,14 +53,27 @@ class AuthController extends Controller
         ]);
 
         // Attempt to log the user in
-        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 'active'])) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+            if (Auth::guard('admin')->user()->status == 'inactive') {
+                return webResponse([
+                    'hasRedirect' => false,
+                    'url' => null,
+                    'status' => Response::HTTP_UNAUTHORIZED,
+                    'message' => __('Your account has been suspended, please contact your admin')
+                ]);
+            }
 
             // if successful, then redirect to their intended location
-            return (new WebSuccessResponse(message: ResponseMessage::LOGGED_OUT_SUCCESSFULLY->getMessage()))->toResponse();
+            return (new WebSuccessResponse(
+                message: ResponseMessage::LOGGED_IN_SUCCESSFULLY->getMessage(),
+                hasRedirect: true,
+                url: route('admin.index')
+            ))->toResponse();
         }
 
         return webResponse([
-            'has_redirect' => false,
+            'hasRedirect' => false,
             'url' => null,
             'status' => Response::HTTP_UNPROCESSABLE_ENTITY,
             'message' => __('lang.Invalid credentials')

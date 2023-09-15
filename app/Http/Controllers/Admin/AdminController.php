@@ -94,7 +94,7 @@ class AdminController extends Controller
         try {
             $data = $request->only(['name', 'email', 'password', 'primary_admin', 'role_id', 'profile_image']);
 
-            $admin = (new StoreAdminService())->setData($data)->handle();
+            $admin = (new StoreAdminService())->setData($data)->execute();
 
             return (new WebSuccessResponse(
                 message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),

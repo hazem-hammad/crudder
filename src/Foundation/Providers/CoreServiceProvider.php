@@ -13,6 +13,7 @@ use App\Foundation\View\Components\Forms\UploadField;
 use App\Foundation\View\Components\Layouts\Footer;
 use App\Foundation\View\Components\Layouts\Header;
 use App\Foundation\View\Components\Layouts\Sidebar;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 

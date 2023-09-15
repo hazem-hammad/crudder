@@ -11,12 +11,10 @@
     </select>
     &nbsp;&nbsp;
     <button class="btn btn-primary me-2 ml-5 btn-sm" id="kt_search">
-        <span>
             <span> @lang('Search') </span>
-        </span>
     </button>
 
     <button class="btn btn-light-primary btn-sm" id="kt_reset">
-        <i class="fas fa-close"></i>
+        <span> @lang('Reset') </span>
     </button>
 </div>

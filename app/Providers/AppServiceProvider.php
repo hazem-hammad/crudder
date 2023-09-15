@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Foundation\Enums\Permissions;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;

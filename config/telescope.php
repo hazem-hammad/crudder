@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'path' => env('TELESCOPE_PATH', 'debug/abcwercdxswsaa'),
+    'path' => env('TELESCOPE_PATH', 'debugger'),
 
     /*
     |--------------------------------------------------------------------------

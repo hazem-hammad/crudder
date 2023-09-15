@@ -2,11 +2,11 @@
 
 namespace App\Modules\BaseModule\Http\Controllers;
 
-use App\Exceptions\ErrorException;
 use App\Foundation\Builder\TableBuilder;
 use App\Foundation\Builder\TableColumn;
 use App\Foundation\Enums\Permissions;
 use App\Foundation\Enums\ResponseMessage;
+use App\Foundation\Exceptions\ErrorException;
 use App\Foundation\Http\Controllers\BaseController;
 use App\Foundation\Services\General\Response\WebSuccessResponse;
 use App\Modules\BaseModule\Filters\BaseModuleFilters;
@@ -35,7 +35,7 @@ class BaseModuleController extends BaseController
 
     protected bool $deletionAllowed = true;
 
-    protected bool $displayPageStatistics = true;
+    protected bool $displayPageStatistics = false;
 
     /**
      * Create a new controller instance.
@@ -94,35 +94,17 @@ class BaseModuleController extends BaseController
     protected function store(CreateBaseModuleRequest $createBaseModuleRequest): JsonResponse
     {
         try {
-
             $data = $createBaseModuleRequest->only('name_ar', 'name_en', 'status');
 
             (new StoreBaseModuleService())->setData($data)->execute();
 
-            return (new WebSuccessResponse(
-                message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
+            return (new WebSuccessResponse(message: ResponseMessage::CREATED_SUCCESSFULLY->getMessage(),
                 hasRedirect: true
-            ))
-                ->toResponse();
+            ))->toResponse();
 
-        } catch (ErrorException $exception) {
-            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
+        } catch (Exception $exception) {
+            throw new ErrorException($exception->getMessage());
         }
-    }
-
-    /**
-     * @param BaseModule $baseModule
-     * @return View
-     */
-    protected function show(BaseModule $baseModule): View
-    {
-        $supportedLanguages = supportedLanguages();
-
-        return view($this->config['views']['show'], [
-            'supportedLanguages' => $supportedLanguages,
-            'config' => $this->config,
-            'row' => $baseModule,
-        ]);
     }
 
     /**
@@ -137,7 +119,7 @@ class BaseModuleController extends BaseController
 
             return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
 
-        } catch (ErrorException $exception) {
+        } catch (Exception $exception) {
             throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
         }
     }
@@ -161,11 +143,16 @@ class BaseModuleController extends BaseController
      */
     protected function update(BaseModule $baseModule, UpdateBaseModuleRequest $updateBaseModuleRequest): JsonResponse
     {
-        $data = $updateBaseModuleRequest->only('name_ar', 'name_en', 'status');
+        try {
+            $data = $updateBaseModuleRequest->only('name_ar', 'name_en', 'status');
 
-        (new UpdateBaseModuleService($baseModule))->setData($data)->execute();
+            (new UpdateBaseModuleService($baseModule))->setData($data)->execute();
 
-        return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
+            return (new WebSuccessResponse(message: ResponseMessage::UPDATED_SUCCESSFULLY->getMessage()))->toResponse();
+
+        } catch (Exception $exception) {
+            throw new Exception(ResponseMessage::SOMETHING_WENT_WRONG->getMessage());
+        }
     }
 
     /**
@@ -194,7 +181,6 @@ class BaseModuleController extends BaseController
         $this->tableColumns = (new TableBuilder())
             ->addColumn(TableColumn::create()->setColumn('id')->setName('#')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('name')->setName('Name')->setIsSortable(true))
-            ->addColumn(TableColumn::create()->setColumn('status')->setName('Status')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('created_at')->setName('Creation date')->setIsSortable(true))
             ->addColumn(TableColumn::create()->setColumn('actions')->setName('Actions'))
             ->generate();

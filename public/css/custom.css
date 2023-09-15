@@ -1,13 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
-@charset "UTF-8";
 .btn-group-sm > .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon),
 .btn:not(.btn-outline):not(.btn-dashed):not(.border-hover):not(.border-active):not(.btn-flush):not(.btn-icon).btn-sm {
   padding: calc(0.55rem + 1px) calc(1.25rem + 10px);
-  border-radius: ٥px;
+  border-radius: 5px;
 }
 
 .form-control {
-  border-radius: ٥px;
+  border-radius: 5px;
 }
 
 table.dataTable > thead > tr > td:not(.sorting_disabled), table.dataTable > thead > tr > th:not(.sorting_disabled),
@@ -25,7 +24,7 @@ table.dataTable thead tr > .dtfc-fixed-left, table.dataTable thead tr > .dtfc-fi
 }
 
 .aside-menu .menu .menu-item .menu-link.active {
-  background-color: #ffffff2e;
+  background-color: #ffffff24;
 }
 
 div.dataTables_wrapper div.dataTables_processing {

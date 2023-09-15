@@ -2,8 +2,8 @@
 
 namespace App\Services\Admin;
 
-use App\Exceptions\MediaUploadException;
 use App\Foundation\Enums\ResponseMessage;
+use App\Foundation\Exceptions\MediaUploadException;
 use App\Foundation\Models\BaseModel;
 use App\Models\Admin\Admin;
 use Exception;

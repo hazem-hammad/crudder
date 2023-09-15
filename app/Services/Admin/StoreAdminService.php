@@ -8,7 +8,6 @@ use App\Foundation\Models\BaseModel;
 use App\Foundation\Services\BaseService;
 use App\Models\Admin\Admin;
 use Exception;
-use Illuminate\Database\Eloquent\Model;
 
 class StoreAdminService extends BaseService
 {
@@ -20,10 +19,10 @@ class StoreAdminService extends BaseService
     }
 
     /**
-     * @return Admin|Model
+     * @return BaseModel
      * @throws Exception
      */
-    public function handle(): Model|Admin
+    public function execute(): BaseModel
     {
         $admin = $this->resource->create($this->data());
 
