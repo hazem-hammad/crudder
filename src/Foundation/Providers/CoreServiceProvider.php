@@ -50,6 +50,10 @@ class CoreServiceProvider extends BaseServiceProvider
      */
     public function register(): void
     {
+        $this->loadMigrationsFrom([
+            realpath($this->migration_path)
+        ]);
+
         $this->registerResources();
     }
 

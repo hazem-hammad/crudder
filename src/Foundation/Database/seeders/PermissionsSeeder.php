@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace App\Foundation\Database\seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -9,7 +9,7 @@ use Spatie\Permission\PermissionRegistrar;
 class PermissionsSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Run the database seeders.
      *
      * @return void
      */
