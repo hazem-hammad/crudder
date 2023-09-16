@@ -1,41 +1,9 @@
-@php use App\Enums\TicketStatus; @endphp
 @extends('Core::layouts.master')
 @section('page-title', 'Dashboard')
 @section('page-sub-title', 'Index')
 @section('content')
 
     <div id="kt_content_container" class="container-xxl">
-
-        <div class="row g-5 g-xl-10">
-
-            <div class="mb-5">
-
-                <div class="card card-flush">
-
-                    <div class="card-body align-items-center">
-
-                        <div class="col-md-4">
-                            <!--Status Filter!-->
-                            <div class="d-flex align-items-center position-relative my-1">
-                                <label class="w-50">Select Season</label>
-                                <select class="form-select form-control-solid form-select-sm datatable-input"
-                                        data-control="select2"
-                                        onchange="getStatisticsBySeasonId(this)"
-                                        data-placeholder="@lang('Select an status')" id="status" name="status">
-                                    <option></option>
-
-                                </select>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
 
         <div class="row g-5 g-xl-10">
 
@@ -195,7 +163,6 @@
 
 @section('scripts')
 
-    <script src="{{ asset('js/charts.min.js') }}"></script>
     <script src="{{ asset('js/charts.custom.js') }}"></script>
 
     <script>

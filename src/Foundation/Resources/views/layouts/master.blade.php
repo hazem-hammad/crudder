@@ -31,6 +31,7 @@
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css"/>
 {{--    <link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
     <!--end::Global Stylesheets Bundle-->
+    @livewireStyles
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -112,6 +113,7 @@
 
 {{--<script src="{{ asset('js/app.js') }}"></script>--}}
 @yield('scripts')
+@livewireScripts
 
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
